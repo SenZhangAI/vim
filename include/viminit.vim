@@ -62,5 +62,8 @@ set swapfile
 autocmd FocusLost * silent! wa
 autocmd InsertLeave * silent! wa
 
+" remove tailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 " set cursor to last position when reopen
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
