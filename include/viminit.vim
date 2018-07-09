@@ -40,8 +40,6 @@ let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 colorscheme solarized
 set background=dark
-"hi CursorLine term=bold cterm=bold
-"hi CursorColumn term=bold cterm=bold
 
 " menu
 set wildmenu
