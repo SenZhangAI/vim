@@ -133,10 +133,6 @@
 " Environment Specific Overrides "{{{
 " Allow or disallow certain features based on current terminal emulator or
 " environment.
-if get(s:, 'loaded', 0)
-	finish
-endif
-let s:loaded = 1
 
 if has("gui_running") || &termguicolors
 	let s:gui_version=1
