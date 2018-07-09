@@ -8,6 +8,22 @@ endif
 silent! if plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 
 "----------------------------------------------------------------------
+" package group - basic
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'basic') >= 0
+	Plug 'Raimondi/delimitMate'
+endif
+
+"----------------------------------------------------------------------
+" package group - fantasic
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'fantasic') >= 0
+	Plug 'tpope/vim-surround'
+	Plug 'luochen1990/rainbow'
+	Plug 'zhaocai/GoldenView.Vim'
+endif
+
+"----------------------------------------------------------------------
 " optional
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'nerdtree') >= 0
