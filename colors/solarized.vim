@@ -134,7 +134,7 @@
 " Allow or disallow certain features based on current terminal emulator or
 " environment.
 if get(s:, 'loaded', 0)
-    finish
+	finish
 endif
 let s:loaded = 1
 

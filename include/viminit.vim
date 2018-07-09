@@ -69,6 +69,10 @@ syntax enable
 "set nowritebackup
 "set noswapfile
 
+set history=200
+set undolevels=100
+set viminfo^=%                        " Remember info about open buffers on close
+
 "set autosave
 set swapfile
 autocmd FocusLost * silent! wa
