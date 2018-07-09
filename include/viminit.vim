@@ -25,6 +25,7 @@ set wildignore+=*.DS_Store
 set number
 set numberwidth=6
 set ruler
+set cursorline
 set scrolloff=3
 set wrap
 set linebreak
@@ -33,6 +34,16 @@ set listchars=tab:^-,trail:·,eol:$,extends:>,precedes:<
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
+" color scheme
+set termguicolors
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+colorscheme solarized
+set background=dark
+"hi CursorLine term=bold cterm=bold
+"hi CursorColumn term=bold cterm=bold
+
+" menu
 set wildmenu
 set wildmode=longest:list,full
 
@@ -43,9 +54,9 @@ set smartcase
 
 " FORMAT
 if has('multi_byte')
-    set fileencodings=ucs-bom,utf-8,utf-16,gbk,gb18030,big5,euc-jp,latin1
-    set fenc=utf-8
-    set enc=utf-8
+	set fileencodings=ucs-bom,utf-8,utf-16,gbk,gb18030,big5,euc-jp,latin1
+	set fenc=utf-8
+	set enc=utf-8
 	scriptencoding
 endif
 
