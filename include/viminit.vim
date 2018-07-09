@@ -50,7 +50,7 @@ endif
 filetype on                           " enable filetype detection
 filetype indent on                    " enable filetype-specific indenting
 filetype plugin on                    " enable filetype-specific plugins
-syntax on
+syntax enable
 
 " SAVING
 "set nobackup
