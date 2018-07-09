@@ -54,6 +54,47 @@ endif
 "----------------------------------------------------------------------
 " optional
 "----------------------------------------------------------------------
+
+" deoplete
+if index(g:bundle_group, 'deoplete') >= 0
+	if has('nvim')
+		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	else
+		Plug 'Shougo/deoplete.nvim'
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+
+	" Plug 'zchee/deoplete-clang'
+	Plug 'zchee/deoplete-jedi'
+
+	let g:deoplete#enable_at_startup = 1
+	let g:deoplete#enable_smart_case = 1
+	let g:deoplete#enable_refresh_always = 1
+
+	inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<tab>"
+	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <expr><BS> deoplete#smart_close_popup()."\<bs>"
+	inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+	let g:deoplete#sources = {}
+	let g:deoplete#sources._ = ['buffer', 'dictionary']
+	" let g:deoplete#sources.cpp = ['clang']
+	let g:deoplete#sources.python = ['jedi']
+	let g:deoplete#sources.cpp = ['omni']
+
+	set shortmess+=c
+	let g:echodoc#enable_at_startup = 1
+
+	if exists('g:python_host_prog')
+		let g:deoplete#sources#jedi#python_path = g:python_host_prog
+	endif
+
+	let g:deoplete#sources#jedi#enable_cache = 1
+endif
+
+
 if index(g:bundle_group, 'rainbow') >= 0
 	Plug 'luochen1990/rainbow'
 	let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
