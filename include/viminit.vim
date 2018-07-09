@@ -4,6 +4,9 @@ set nocompatible
 set winaltkeys=no
 set backspace=eol,start,indent
 
+" using clipboard cross application
+set clipboard+=unnamed
+
 set shiftwidth=4
 set softtabstop=4
 set noexpandtab
