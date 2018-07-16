@@ -38,6 +38,7 @@ autocmd WinLeave * setlocal nocursorline
 set termguicolors
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
+let g:solarized_transparent=1
 colorscheme solarized
 set background=dark
 
