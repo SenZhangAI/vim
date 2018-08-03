@@ -38,4 +38,4 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-l> :call NumberToggle()<cr>
+nnoremap <F6> :call NumberToggle()<cr>

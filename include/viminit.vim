@@ -23,6 +23,7 @@ set wildignore+=*.DS_Store
 
 " APPEARANCE
 set number
+set relativenumber
 set numberwidth=6
 set ruler
 set cursorline
