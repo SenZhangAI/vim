@@ -161,6 +161,21 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline#extensions#tabline#buffer_nr_format='%s:'
 endif
 
+if index(g:bundle_group, 'markdown') >= 0
+	Plug 'junegunn/vim-easy-align' " better than tabular
+	Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+	Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
+	" LaTex math: support $x^2$, $$x^2$$ syntax
+	let g:tex_conceal = ""
+	let g:vim_markdown_math=1
+	" Highlight YAML frontmatter as used by jekyll
+	let g:vim_markdown_frontmatter=1
+	let g:vim_markdown_conceal = 0
+	let g:vim_markdown_folding_disabled = 1
+	let g:vim_markdown_no_extensions_in_markdown = 1
+endif
+
+
 if index(g:bundle_group, 'ale') >= 0
 	Plug 'w0rp/ale'
 
