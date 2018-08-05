@@ -37,9 +37,9 @@ autocmd WinLeave * setlocal nocursorline
 
 " color scheme
 set termguicolors
-" correct some terminal's color
-let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+if exists('$TMUX')
+  set term=xterm-256color
+endif
 
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
