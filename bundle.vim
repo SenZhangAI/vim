@@ -92,6 +92,10 @@ endif
 "----------------------------------------------------------------------
 " optional
 "----------------------------------------------------------------------
+" Terminus enhances Vim's and Neovim's integration with the terminal in four ways, particularly when using tmux and iTerm or KDE Konsole, closing the gap between terminal and GUI Vim
+if index(g:bundle_group, 'terminus') >= 0
+	Plug 'wincent/terminus'
+endif
 
 " deoplete
 if index(g:bundle_group, 'deoplete') >= 0
@@ -174,9 +178,9 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	"let g:NERDTreeExactMatchHighlightFullName = 1
 	"let g:NERDTreePatternMatchHighlightFullName = 1
 	noremap <leader>n :NERDTreeFind<cr>
-	"noremap <space>to :NERDTreeFocus<cr>
-	"noremap <space>tm :NERDTreeMirror<cr>
-	"noremap <space>tt :NERDTreeToggle<cr>
+	noremap <space>to :NERDTreeFocus<cr>
+	noremap <space>tm :NERDTreeMirror<cr>
+	noremap <space>tt :NERDTreeToggle<cr>
 endif
 
 if index(g:bundle_group, 'airline') >= 0
