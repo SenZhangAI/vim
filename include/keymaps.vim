@@ -13,7 +13,8 @@ vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 nnoremap <leader>af ggVG=
 
 " select All
-nnoremap <C-a> ggVG
+noremap <C-a> ggVG
+inoremap <C-a> <ESC>ggVG
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
