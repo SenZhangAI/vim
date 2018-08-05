@@ -51,6 +51,27 @@ if index(g:bundle_group, 'basic') >= 0
 
 	Plug 'scrooloose/nerdcommenter'
 	map <silent> \\ <Plug>NERDCommenterToggle
+
+	if has('python') || has('python3')
+		Plug 'Yggdroot/LeaderF'
+		let g:Lf_ShortcutF = '<c-p>'
+		let g:Lf_ShortcutB = '<m-n>'
+		noremap <c-n> :LeaderfMru<cr>
+		noremap <m-p> :LeaderfFunction!<cr>
+		noremap <m-P> :LeaderfBufTag!<cr>
+		noremap <m-n> :LeaderfBuffer<cr>
+		noremap <m-m> :LeaderfTag<cr>
+		let g:Lf_MruMaxFiles = 2048
+		let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+	else
+		Plug 'ctrlpvim/ctrlp.vim'
+		Plug 'tacahiroy/ctrlp-funky'
+		let g:ctrlp_map = ''
+		noremap <c-p> :CtrlP<cr>
+		noremap <c-n> :CtrlPMRUFiles<cr>
+		noremap <m-p> :CtrlPFunky<cr>
+		noremap <m-n> :CtrlPBuffer<cr>
+	endif
 endif
 
 "----------------------------------------------------------------------
