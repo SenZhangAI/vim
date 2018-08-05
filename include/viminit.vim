@@ -89,3 +89,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " set cursor to last position when reopen
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" make gitgutter faster
+set updatetime=500

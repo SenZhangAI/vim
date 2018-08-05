@@ -40,6 +40,13 @@ silent! if plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 " package group - basic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
+	Plug 'mhinz/vim-startify'
+	noremap <space>ht :Startify<cr>
+	noremap <space>hy :tabnew<cr>:Startify<cr>
+
+	Plug 'tpope/vim-fugitive'
+	Plug 'airblade/vim-gitgutter'
+
 	Plug 'Raimondi/delimitMate'
 	let delimitMate_jump_expansion = 1
 	let delimitMate_expand_space = 1
@@ -53,7 +60,7 @@ if index(g:bundle_group, 'basic') >= 0
 	map <silent> \\ <Plug>NERDCommenterToggle
 
 	if has('python') || has('python3')
-		Plug 'Yggdroot/LeaderF'
+		Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 		let g:Lf_ShortcutF = '<c-p>'
 		let g:Lf_ShortcutB = '<m-n>'
 		noremap <c-n> :LeaderfMru<cr>
