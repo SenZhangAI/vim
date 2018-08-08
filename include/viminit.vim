@@ -36,7 +36,10 @@ autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
 " color scheme
-set termguicolors
+if has('termguicolors')
+	set termguicolors
+endif
+
 if exists('$TMUX')
   set term=xterm-256color
 endif

@@ -134,7 +134,7 @@
 " Allow or disallow certain features based on current terminal emulator or
 " environment.
 
-if has("gui_running") || &termguicolors
+if has("gui_running") || (has("termguicolors") && &termguicolors)
 	let s:gui_version=1
 endif
 
