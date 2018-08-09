@@ -14,13 +14,6 @@ set tabstop=4
 set cindent
 set autoindent
 
-set wildignore+=*.swp,*.bak,*.obj,*.o,*.exe,*.pyc,*.dll,*.so
-set wildignore+=*.png,*.jpg,*.gif,*.ico
-set wildignore+=*.swf,*.flv,*.mp3,*.mp4,*.avi,*.mkv,*.mpeg
-set wildignore+=*.tar,*.gz,*.zip,*.rar,*.bz2
-set wildignore+=*.git*,*.hg*,*.svn*
-set wildignore+=*.DS_Store
-
 " APPEARANCE
 set number
 set relativenumber

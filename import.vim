@@ -6,3 +6,4 @@ exec 'set rtp+='.s:home
 
 Import include/viminit.vim
 Import include/keymaps.vim
+Import include/ignores.vim
