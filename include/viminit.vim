@@ -7,12 +7,24 @@ set backspace=eol,start,indent
 " using clipboard cross application
 set clipboard+=unnamed
 
+" INDENT
+set expandtab
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab
 set tabstop=4
-set cindent
+
 set autoindent
+set cindent
+set cinoptions=:0,l1,g0,t0,+0,cs,C1,(0,U1,m1,)50,*200
+
+" for C-like programming where comments have explicit end character,
+" if starting a new line in the middle of a comment automatically add comment character
+autocmd FileType c,cpp,java setlocal formatoptions+=ro
+
+" MAKEFILE and asm should use tab, not spaces
+autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
+
+autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 " APPEARANCE
 set number
@@ -30,11 +42,11 @@ autocmd WinLeave * setlocal nocursorline
 
 " color scheme
 if has('termguicolors')
-	set termguicolors
+    set termguicolors
 endif
 
 if exists('$TMUX')
-  set term=xterm-256color
+    set term=xterm-256color
 endif
 
 let g:solarized_termcolors=256
@@ -54,10 +66,10 @@ set smartcase
 
 " FORMAT
 if has('multi_byte')
-	set fileencodings=ucs-bom,utf-8,utf-16,gbk,gb18030,big5,euc-jp,latin1
-	set fenc=utf-8
-	set enc=utf-8
-	scriptencoding
+    set fileencodings=ucs-bom,utf-8,utf-16,gbk,gb18030,big5,euc-jp,latin1
+    set fenc=utf-8
+    set enc=utf-8
+    scriptencoding
 endif
 
 " filetype & syntax setting
