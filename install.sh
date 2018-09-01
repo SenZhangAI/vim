@@ -31,7 +31,7 @@ backup_file $nvim_rc
 ## linking to .vimrc
 ln -s $vim_dir/vimrc $vim_rc 2>/dev/null
 
-## linking to .gvimrc
+## linking to .nvimrc
 ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
 
 ## linking to .gvimrc

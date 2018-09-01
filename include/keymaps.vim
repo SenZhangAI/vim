@@ -32,11 +32,11 @@ noremap <right> :bn<CR>
 vnoremap . :normal .<CR>
 
 function! NumberToggle()
-  if(&rnu == 1)
-    set nornu
-  else
-    set rnu
-  endif
+    if(&rnu == 1)
+        set nornu
+    else
+        set rnu
+    endif
 endfunc
 
 nnoremap <F6> :call NumberToggle()<cr>
