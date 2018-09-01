@@ -5,7 +5,7 @@ set winaltkeys=no
 set backspace=eol,start,indent
 
 " using clipboard cross application
-set clipboard+=unnamed
+set clipboard=unnamed
 
 " INDENT
 set expandtab
@@ -24,7 +24,7 @@ autocmd FileType c,cpp,java setlocal formatoptions+=ro
 " MAKEFILE and asm should use tab, not spaces
 autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 
-autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+" autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 " APPEARANCE
 set number

@@ -3,10 +3,10 @@
 # set vim dir
 vim_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-vim_rc=~/.vimrc
-gvim_rc=~/.gvimrc
-mkdir -p ~/.config/nvim/
-nvim_rc=~/.config/nvim/init.vim
+vim_rc=$HOME/.vimrc
+gvim_rc=$HOME/.gvimrc
+mkdir -p $HOME/.config/nvim/
+nvim_rc=$HOME/.config/nvim/init.vim
 backup_rand=$RANDOM
 
 backup_file() {
