@@ -85,6 +85,8 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
     Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'svermeulen/vim-easyclip'
     Plug 'zhaocai/GoldenView.Vim'
     Plug 'osyo-manga/vim-over'
     noremap <Leader>; :OverCommandLine<CR>
