@@ -84,6 +84,7 @@ endif
 " package group - fantasic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
+    Plug 'morhetz/gruvbox'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
     Plug 'svermeulen/vim-easyclip'
