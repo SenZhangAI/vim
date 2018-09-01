@@ -16,9 +16,11 @@ backup_file() {
 
         if [ "$ans" == "y" ]; then
             echo "backup your original $1 to $1-$(date +%Y%m%d)-$backup_rand-bak"
-            mv $1 $1$(date +%Y%m%d)-$backup_rand-bak
-            return 1;
+            cp $1 $1$(date +%Y%m%d)-$backup_rand-bak
         fi
+
+        rm $1
+        return 1;
     fi
     return 0;
 }
@@ -32,6 +34,7 @@ backup_file $nvim_rc
 ln -s $vim_dir/vimrc $vim_rc 2>/dev/null
 
 ## linking to .nvimrc
+echo ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
 ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
 
 ## linking to .gvimrc
