@@ -81,6 +81,25 @@ if index(g:bundle_group, 'basic') >= 0
 endif
 
 "----------------------------------------------------------------------
+" package group - enhanced
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'enhanced') >= 0
+endif
+
+"----------------------------------------------------------------------
+" package group - try
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'try') >= 0
+    Plug 'haya14busa/incsearch.vim'
+    Plug 'haya14busa/incsearch-fuzzy.vim'
+    Plug 'haya14busa/incsearch-easymotion.vim'
+    Plug 'tpope/vim-obsession' " save current state of vim
+
+    Plug 'svermeulen/vim-easyclip'
+    inoremap <c-v> <plug>EasyClipInsertModePaste
+endif
+
+"----------------------------------------------------------------------
 " package group - fantasic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
@@ -88,7 +107,6 @@ if index(g:bundle_group, 'fantasic') >= 0
     Plug 'jszakmeister/vim-togglecursor'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
-    Plug 'svermeulen/vim-easyclip'
     Plug 'zhaocai/GoldenView.Vim'
     Plug 'osyo-manga/vim-over'
     noremap <Leader>; :OverCommandLine<CR>
