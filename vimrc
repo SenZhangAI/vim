@@ -11,8 +11,8 @@ endif
 if exists('$TMUX')
     set term=xterm-256color
     " hack to make vim work well in tmux
-    set t_8f=^[[38;2;%lu;%lu;%lum
-    set t_8b=^[[48;2;%lu;%lu;%lum
+    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
     " add the line below to .tmux.conf file
     " set-option -ga terminal-overrides ",xterm-256color:Tc"
 endif
