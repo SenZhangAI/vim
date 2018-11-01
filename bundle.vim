@@ -104,6 +104,7 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
     Plug 'morhetz/gruvbox'
+    Plug 'iCyMind/NeoSolarized'
     Plug 'jszakmeister/vim-togglecursor'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'

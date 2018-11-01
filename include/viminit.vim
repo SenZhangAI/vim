@@ -40,20 +40,6 @@ set listchars=tab:^-,trail:·,eol:$,extends:>,precedes:<
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 
-" color scheme
-if has('termguicolors')
-    set termguicolors
-endif
-
-if exists('$TMUX')
-    set term=xterm-256color
-endif
-
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_transparent=1
-colorscheme solarized
-set background=dark
 
 " menu
 set wildmenu
