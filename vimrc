@@ -39,3 +39,11 @@ let g:neosolarized_italic = 0
 
 colorscheme NeoSolarized
 set background=dark
+
+if index(g:bundle_group, 'airline') >= 0
+    let g:airline_theme='luna'
+    " tabline
+    let g:airline#extensions#tabline#enabled=1
+    let g:airline#extensions#tabline#buffer_nr_show=1
+    let g:airline#extensions#tabline#buffer_nr_format='%s:'
+endif

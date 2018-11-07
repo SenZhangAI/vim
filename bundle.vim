@@ -210,11 +210,6 @@ endif
 if index(g:bundle_group, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    let g:airline_theme='luna'
-    " tabline
-    let g:airline#extensions#tabline#enabled=1
-    let g:airline#extensions#tabline#buffer_nr_show=1
-    let g:airline#extensions#tabline#buffer_nr_format='%s:'
 endif
 
 if index(g:bundle_group, 'markdown') >= 0
