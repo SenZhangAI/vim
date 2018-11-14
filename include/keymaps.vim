@@ -27,6 +27,9 @@ nnoremap // :nohlsearch<CR>
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
 
+" force save when normal user is forbiddened
+cnoremap w!! w !sudo tee > /dev/null %
+
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
