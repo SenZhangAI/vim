@@ -228,13 +228,14 @@ if index(g:bundle_group, 'nerdtree') >= 0
     " Appearance
     let g:NERDTreeMinimalUI = 1
     let g:NERDTreeDirArrows = 1
-    "let g:NERDTreeFileExtensionHighlightFullName = 1
-    "let g:NERDTreeExactMatchHighlightFullName = 1
-    "let g:NERDTreePatternMatchHighlightFullName = 1
+    let g:NERDTreeFileExtensionHighlightFullName = 1
+    let g:NERDTreeExactMatchHighlightFullName = 1
+    let g:NERDTreePatternMatchHighlightFullName = 1
     noremap <leader>n :NERDTreeFind<cr>
     noremap <space>to :NERDTreeFocus<cr>
     noremap <space>tm :NERDTreeMirror<cr>
     noremap <space>tt :NERDTreeToggle<cr>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endif
 
 if index(g:bundle_group, 'airline') >= 0
