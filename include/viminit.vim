@@ -68,9 +68,17 @@ syntax enable
 "set nobackup
 "set nowritebackup
 "set noswapfile
-
-set history=200
+"
+" Persistent undo
+if has('persistent_undo') "check if vim supports it
+    try
+        set undofile
+        set undodir=$HOME/.vim/.undo
+    catch
+    endtry
+endif
 set undolevels=100
+set history=200
 set viminfo^=%                        " Remember info about open buffers on close
 
 "set autosave

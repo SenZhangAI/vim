@@ -34,7 +34,6 @@ backup_file $nvim_rc
 ln -s $vim_dir/vimrc $vim_rc 2>/dev/null
 
 ## linking to .nvimrc
-echo ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
 ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
 
 ## linking to .gvimrc
@@ -42,3 +41,5 @@ ln -s $vim_dir/gvimrc $gvim_rc 2>/dev/null
 
 ## install plugin
 vim +PlugInstall +qall
+
+mkdir -p $HOME/.vim/.undo
