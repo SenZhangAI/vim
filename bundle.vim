@@ -119,6 +119,9 @@ if index(g:bundle_group, 'fantasic') >= 0
         let g:gutentags_modules += ['gtags_cscope']
     endif
     if len(g:gutentags_modules) > 0
+        "let g:gutentags_trace = 1 " debug for gutentags
+        let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundles/*"]
+
         set tags=./.tags;,.tags
         Plug 'ludovicchabant/vim-gutentags'
         let g:gutentags_project_root = ['.root']
