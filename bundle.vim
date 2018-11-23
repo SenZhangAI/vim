@@ -124,7 +124,7 @@ if index(g:bundle_group, 'fantasic') >= 0
 
         set tags=./.tags;,.tags
         Plug 'ludovicchabant/vim-gutentags'
-        let g:gutentags_project_root = ['.root']
+        let g:gutentags_project_root = ['.git', '.idea', '.root', '.svn','.hg','.project']
         let g:gutentags_ctags_tagfile = '.tags'
 
         " let g:gutentags_modules = ['ctags', 'gtags_cscope']
@@ -223,7 +223,6 @@ endif
 
 if index(g:bundle_group, 'nerdtree') >= 0
     Plug 'scrooloose/nerdtree' ", {'on': ['NERDTree', 'NERDTreeFocus', 'NERDTreeToggle', 'NERDTreeCWD', 'NERDTreeFind'] }
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     let NERDTreeChDirMode=2
     let NERDTreeMouseMode=2
     let g:nerdtree_tabs_focus_on_files=1
@@ -231,9 +230,6 @@ if index(g:bundle_group, 'nerdtree') >= 0
     " Appearance
     let g:NERDTreeMinimalUI = 1
     let g:NERDTreeDirArrows = 1
-    let g:NERDTreeFileExtensionHighlightFullName = 1
-    let g:NERDTreeExactMatchHighlightFullName = 1
-    let g:NERDTreePatternMatchHighlightFullName = 1
     noremap <leader>n :NERDTreeFind<cr>
     noremap <space>to :NERDTreeFocus<cr>
     noremap <space>tm :NERDTreeMirror<cr>
