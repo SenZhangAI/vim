@@ -56,7 +56,7 @@ if index(g:bundle_group, 'basic') >= 0
     au FileType c,cpp,java let b:delimitMate_eol_marker = ";"
 
     Plug 'scrooloose/nerdcommenter'
-    map <silent> \\ <Plug>NERDCommenterToggle
+    map <silent> <A-/> <Plug>NERDCommenterToggle
 
     if has('python') || has('python3')
         Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -84,19 +84,6 @@ endif
 " package group - enhanced
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'enhanced') >= 0
-endif
-
-"----------------------------------------------------------------------
-" package group - try
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'try') >= 0
-    Plug 'haya14busa/incsearch.vim'
-    Plug 'haya14busa/incsearch-fuzzy.vim'
-    Plug 'haya14busa/incsearch-easymotion.vim'
-    Plug 'tpope/vim-obsession' " save current state of vim
-
-    Plug 'svermeulen/vim-easyclip'
-    inoremap <c-v> <plug>EasyClipInsertModePaste
 endif
 
 "----------------------------------------------------------------------
@@ -294,6 +281,20 @@ if index(g:bundle_group, 'ale') >= 0
         let g:ale_linters.c += ['clang']
         let g:ale_linters.cpp += ['clang']
     endif
+    nmap <A-CR> <Plug>(ale_fix)
+endif
+
+"----------------------------------------------------------------------
+" package group - try: do some experiments
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'try') >= 0
+    Plug 'haya14busa/incsearch.vim'
+    Plug 'haya14busa/incsearch-fuzzy.vim'
+    Plug 'haya14busa/incsearch-easymotion.vim'
+    Plug 'tpope/vim-obsession' " save current state of vim
+
+    Plug 'svermeulen/vim-easyclip'
+    inoremap <c-v> <plug>EasyClipInsertModePaste
 endif
 
 call plug#end()
