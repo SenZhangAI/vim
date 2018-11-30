@@ -10,7 +10,7 @@ vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 
 " auto format file
-nnoremap <leader>af ggVG=
+nnoremap <leader>af gg=G``
 
 " select All
 noremap <C-a> ggVG
