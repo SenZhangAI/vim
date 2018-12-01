@@ -46,9 +46,9 @@ if index(g:bundle_group, 'basic') >= 0
     Plug 'Chiel92/vim-autoformat'
     Plug 'junegunn/vim-easy-align'
     " Start interactive EasyAlign in visual mode(e.g. vip<hotkey>)
-    vnoremap \= <Plug>(EasyAlign)
+    vmap \= <Plug>(EasyAlign)
     " Start interactive EasyAlign for a motion/text object (e.g. <hotkey>ip)
-    nnoremap \= <Plug>(EasyAlign)
+    nmap \= <Plug>(EasyAlign)
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
