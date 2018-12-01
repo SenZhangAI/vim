@@ -43,6 +43,8 @@ if index(g:bundle_group, 'basic') >= 0
     noremap <space>ht :Startify<cr>
     noremap <space>hy :tabnew<cr>:Startify<cr>
 
+    Plug 'Chiel92/vim-autoformat'
+
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
 
@@ -215,6 +217,7 @@ if index(g:bundle_group, 'nerdtree') >= 0
     let g:nerdtree_tabs_focus_on_files=1
     let g:nerdtree_tabs_open_on_gui_startup=0
     " Appearance
+    let g:NERDTreeWinSize = 35
     let g:NERDTreeMinimalUI = 1
     let g:NERDTreeDirArrows = 1
     noremap <leader>n :NERDTreeFind<cr>

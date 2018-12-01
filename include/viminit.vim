@@ -52,7 +52,7 @@ set smartcase
 
 " FORMAT
 if has('multi_byte')
-    set fileencodings=ucs-bom,utf-8,utf-16,gbk,gb18030,big5,euc-jp,latin1
+    set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gbk,gb18030,big5,euc-jp,latin1
     set fenc=utf-8
     set enc=utf-8
     scriptencoding
