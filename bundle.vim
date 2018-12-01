@@ -44,6 +44,11 @@ if index(g:bundle_group, 'basic') >= 0
     noremap <space>hy :tabnew<cr>:Startify<cr>
 
     Plug 'Chiel92/vim-autoformat'
+    Plug 'junegunn/vim-easy-align'
+    " Start interactive EasyAlign in visual mode(e.g. vip<hotkey>)
+    vnoremap \= <Plug>(EasyAlign)
+    " Start interactive EasyAlign for a motion/text object (e.g. <hotkey>ip)
+    nnoremap \= <Plug>(EasyAlign)
 
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -233,7 +238,6 @@ if index(g:bundle_group, 'airline') >= 0
 endif
 
 if index(g:bundle_group, 'markdown') >= 0
-    Plug 'junegunn/vim-easy-align' " better than tabular
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
     " LaTex math: support $x^2$, $$x^2$$ syntax
