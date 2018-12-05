@@ -126,7 +126,7 @@ if index(g:bundle_group, 'fantasic') >= 0
         Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
         let g:Lf_ShortcutF = '<C-p>'
         let g:Lf_ShortcutB = '<m-n>'
-        noremap <C-m> :LeaderfMru<cr>
+        "noremap <C-m> :LeaderfMru<cr> "bug: this will alse make <CR> bind to this
         noremap <M-p> :LeaderfFunction!<cr>
         noremap <M-P> :LeaderfBufTag!<cr>
         noremap <M-N> :LeaderfBuffer<cr>
@@ -176,6 +176,8 @@ if index(g:bundle_group, 'fantasic') >= 0
     noremap <silent><tab>] :FufBufferTag<cr>
 
     Plug 'dyng/ctrlsf.vim'
+
+    Plug 'dkprice/vim-easygrep'
 endif
 
 "----------------------------------------------------------------------
