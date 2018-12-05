@@ -69,22 +69,56 @@ if index(g:bundle_group, 'basic') >= 0
         Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
         let g:Lf_ShortcutF = '<c-p>'
         let g:Lf_ShortcutB = '<m-n>'
-        noremap <c-n> :LeaderfMru<cr>
-        noremap <m-p> :LeaderfFunction!<cr>
-        noremap <m-P> :LeaderfBufTag!<cr>
-        noremap <m-n> :LeaderfBuffer<cr>
-        noremap <m-m> :LeaderfTag<cr>
+        noremap <C-n> :LeaderfMru<cr>
+        noremap <M-p> :LeaderfFunction!<cr>
+        noremap <M-P> :LeaderfBufTag!<cr>
+        noremap <M-n> :LeaderfBuffer<cr>
+        noremap <M-m> :LeaderfTag<cr>
+
+        let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+        let g:Lf_WorkingDirectoryMode = 'Ac'
+        let g:Lf_WindowHeight = 0.30
+        let g:Lf_CacheDirectory = expand('~/.vim/cache')
+        let g:Lf_ShowRelativePath = 0
+        let g:Lf_HideHelp = 1
+
+        let g:Lf_WildIgnore = {
+                    \ 'dir': ['.svn','.git','.hg'],
+                    \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+                    \ }
+
+        let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
         let g:Lf_MruMaxFiles = 2048
+        let g:Lf_StlColorscheme = 'powerline'
         let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
+        let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
+        let g:Lf_NormalMap = {
+                    \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+                    \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
+                    \ "Mru": [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
+                    \ "Tag": [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
+                    \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
+                    \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
+                    \ }
     else
         Plug 'ctrlpvim/ctrlp.vim'
         Plug 'tacahiroy/ctrlp-funky'
         let g:ctrlp_map = ''
-        noremap <c-p> :CtrlP<cr>
-        noremap <c-n> :CtrlPMRUFiles<cr>
-        noremap <m-p> :CtrlPFunky<cr>
-        noremap <m-n> :CtrlPBuffer<cr>
+        noremap <C-p> :CtrlP<cr>
+        noremap <C-n> :CtrlPMRUFiles<cr>
+        noremap <M-p> :CtrlPFunky<cr>
+        noremap <M-n> :CtrlPBuffer<cr>
     endif
+
+    Plug 'vim-scripts/L9'
+    Plug 'vim-scripts/FuzzyFinder'
+
+    noremap <silent><tab>- :FufMruFile<cr>
+    noremap <silent><tab>= :FufFile<cr>
+    noremap <silent><tab>[ :FufBuffer<cr>
+    noremap <silent><tab>] :FufBufferTag<cr>
+
+    Plug 'dyng/ctrlsf.vim'
 endif
 
 "----------------------------------------------------------------------
@@ -105,6 +139,7 @@ if index(g:bundle_group, 'fantasic') >= 0
     Plug 'zhaocai/GoldenView.Vim'
     Plug 'osyo-manga/vim-over'
     noremap <Leader>; :OverCommandLine<CR>
+
     let g:gutentags_modules = []
     if executable('ctags')
         let g:gutentags_modules += ['ctags']
@@ -301,7 +336,7 @@ if index(g:bundle_group, 'try') >= 0
     Plug 'tpope/vim-obsession' " save current state of vim
 
     Plug 'svermeulen/vim-easyclip'
-    inoremap <c-v> <plug>EasyClipInsertModePaste
+    inoremap <C-v> <plug>EasyClipInsertModePaste
 endif
 
 call plug#end()
