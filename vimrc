@@ -1,6 +1,11 @@
 so ~/.vim/vim/import.vim
 
-let g:bundle_group = ['basic', 'fantasic', 'terminus','deoplete', 'rainbow', 'nerdtree', 'airline', 'markdown', 'ale']
+let g:bundle_group = ['basic', 'fantasic', 'terminus','deoplete', 'rainbow', 'nerdtree', 'airline', 'ale']
+
+call add(g:bundle_group, 'cpp')
+call add(g:bundle_group, 'markdown')
+call add(g:bundle_group, 'terminus')
+
 so ~/.vim/vim/bundle.vim
 
 " color scheme

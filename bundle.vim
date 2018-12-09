@@ -181,6 +181,27 @@ if index(g:bundle_group, 'fantasic') >= 0
 endif
 
 "----------------------------------------------------------------------
+" language spec
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'cpp') >= 0
+    Plug 'nacitar/a.vim', { 'for': ['c', 'cpp'] }
+    Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+endif
+
+if index(g:bundle_group, 'markdown') >= 0
+    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+    Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
+    " LaTex math: support $x^2$, $$x^2$$ syntax
+    let g:tex_conceal = ""
+    let g:vim_markdown_math=1
+    " Highlight YAML frontmatter as used by jekyll
+    let g:vim_markdown_frontmatter=1
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_no_extensions_in_markdown = 1
+endif
+
+"----------------------------------------------------------------------
 " optional
 "----------------------------------------------------------------------
 " Terminus enhances Vim's and Neovim's integration with the terminal in four ways, particularly when using tmux and iTerm or KDE Konsole, closing the gap between terminal and GUI Vim
@@ -275,19 +296,6 @@ endif
 if index(g:bundle_group, 'airline') >= 0
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-endif
-
-if index(g:bundle_group, 'markdown') >= 0
-    Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-    Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
-    " LaTex math: support $x^2$, $$x^2$$ syntax
-    let g:tex_conceal = ""
-    let g:vim_markdown_math=1
-    " Highlight YAML frontmatter as used by jekyll
-    let g:vim_markdown_frontmatter=1
-    let g:vim_markdown_conceal = 0
-    let g:vim_markdown_folding_disabled = 1
-    let g:vim_markdown_no_extensions_in_markdown = 1
 endif
 
 if index(g:bundle_group, 'ale') >= 0
