@@ -29,15 +29,9 @@ backup_file $vim_rc
 backup_file $gvim_rc
 backup_file $nvim_rc
 
-# linking to .rc
-## linking to .vimrc
-ln -s $vim_dir/vimrc $vim_rc 2>/dev/null
-
-## linking to .nvimrc
-ln -s $vim_dir/vimrc $nvim_rc 2>/dev/null
-
-## linking to .gvimrc
-ln -s $vim_dir/gvimrc $gvim_rc 2>/dev/null
+cp $vim_dir/vimrc $vim_rc
+cp $vim_dir/vimrc $nvim_rc
+cp $vim_dir/gvimrc $gvim_rc
 
 ## install plugin
 vim +PlugInstall +qall
