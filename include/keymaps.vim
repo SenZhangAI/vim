@@ -24,7 +24,9 @@ noremap j gj
 noremap k gk
 
 " cancel searched highlight
-nnoremap // :nohlsearch<CR>
+nnoremap <SPACE>hh :nohlsearch<CR>
+
+nnoremap <leader>wa :wall<CR>
 
 " use arrow to shift buffer
 noremap <left> :bp<CR>

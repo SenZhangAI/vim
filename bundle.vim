@@ -61,6 +61,7 @@ if index(g:bundle_group, 'basic') >= 0
     let delimitMate_balance_matchpairs = 1
     au FileType c,cpp,java let b:delimitMate_insert_eol_marker = 2
     au FileType c,cpp,java let b:delimitMate_eol_marker = ";"
+    imap <C-d> <Plug>delimitMateJumpMany
 
     Plug 'scrooloose/nerdcommenter'
     map <silent> <A-/> <Plug>NERDCommenterToggle
@@ -178,6 +179,12 @@ if index(g:bundle_group, 'fantasic') >= 0
     Plug 'dyng/ctrlsf.vim'
 
     Plug 'dkprice/vim-easygrep'
+    map <silent> <Leader>vv <plug>EgMapGrepCurrentWord_v
+    vmap <silent> <Leader>vv <plug>EgMapGrepSelection_v
+    map <silent> <Leader>vr <plug>EgMapReplaceCurrentWord_r
+    vmap <silent> <Leader>vr <plug>EgMapReplaceSelection_r
+    map <silent> <S-F6> <plug>EgMapReplaceCurrentWord_r
+    vmap <silent> <S-F6> <plug>EgMapReplaceSelection_r
 endif
 
 "----------------------------------------------------------------------
@@ -287,9 +294,9 @@ if index(g:bundle_group, 'nerdtree') >= 0
     let g:NERDTreeMinimalUI = 1
     let g:NERDTreeDirArrows = 1
     noremap <leader>n :NERDTreeFind<cr>
+    noremap <space>nn :NERDTreeToggle<cr>
     noremap <space>to :NERDTreeFocus<cr>
     noremap <space>tm :NERDTreeMirror<cr>
-    noremap <space>tt :NERDTreeToggle<cr>
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 endif
 
