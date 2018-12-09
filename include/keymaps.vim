@@ -12,6 +12,9 @@ vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
 " auto format file
 nnoremap <leader>af :Autoformat<CR>
 
+" force save when normal user is forbiddened
+noremap <leader>wf :w !sudo tee > /dev/null %<CR><ESC>
+
 " select All
 noremap <C-a> ggVG
 inoremap <C-a> <ESC>ggVG
@@ -26,9 +29,6 @@ nnoremap // :nohlsearch<CR>
 " use arrow to shift buffer
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
-
-" force save when normal user is forbiddened
-cnoremap w!! w !sudo tee > /dev/null %
 
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
