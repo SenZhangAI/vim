@@ -15,10 +15,6 @@ nnoremap <leader>af :Autoformat<CR>
 " force save when normal user is forbiddened
 noremap <leader>wf :w !sudo tee > /dev/null %<CR><ESC>
 
-" select All
-noremap <C-a> ggVG
-inoremap <C-a> <ESC>ggVG
-
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
 noremap k gk
