@@ -195,6 +195,10 @@ if index(g:bundle_group, 'cpp') >= 0
     Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 endif
 
+if index(g:bundle_group, 'golang') >= 0
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+endif
+
 if index(g:bundle_group, 'markdown') >= 0
     Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
     Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
