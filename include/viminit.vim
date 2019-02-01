@@ -35,7 +35,7 @@ set cursorline
 set scrolloff=3
 set wrap
 set linebreak
-set listchars=tab:^-,trail:·,eol:$,extends:>,precedes:<
+set listchars=tab:^-,trail:-,eol:$,extends:>,precedes:<
 " cursorline switched while focus is switched to another split window
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
