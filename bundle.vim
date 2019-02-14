@@ -231,7 +231,7 @@ if index(g:bundle_group, 'deoplete') >= 0
     endif
 
     " Plug 'zchee/deoplete-clang'
-    Plug 'zchee/deoplete-jedi'
+    Plug 'deoplete-plugins/deoplete-jedi'  "deoplete for python
 
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#enable_smart_case = 1
