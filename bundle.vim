@@ -338,6 +338,16 @@ if index(g:bundle_group, 'ale') >= 0
                 \ 'javascript': ['eslint'],
                 \ 'vue': ['eslint', 'vls'],
                 \ }
+    let g:ale_fixers= {
+                \ 'python': ['autopep8', 'yapf'],
+                \ }
+    " Do not lint or fix minified files
+    let g:ale_pattern_options = {
+                \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+                \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+                \}
+    " If you configure g:ale_pattern_options outside of vimrc, you need this.
+    let g:ale_pattern_options_enabled = 1
 
     function s:lintcfg(name)
         let conf = s:path('tools/config/')
