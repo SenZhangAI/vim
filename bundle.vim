@@ -50,8 +50,7 @@ if index(g:bundle_group, 'basic') >= 0
     " Start interactive EasyAlign for a motion/text object (e.g. <hotkey>ip)
     nmap \= <Plug>(EasyAlign)
 
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
+    Plug 'easymotion/vim-easymotion'
 
     Plug 'Raimondi/delimitMate'
     let delimitMate_jump_expansion = 1
@@ -65,6 +64,11 @@ if index(g:bundle_group, 'basic') >= 0
 
     Plug 'scrooloose/nerdcommenter'
     map <silent> <A-/> <Plug>NERDCommenterToggle
+endif
+
+if index(g:bundle_group, 'git') >= 0
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 endif
 
 "----------------------------------------------------------------------
