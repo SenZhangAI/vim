@@ -69,6 +69,12 @@ endif
 if index(g:bundle_group, 'git') >= 0
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
+    "Plug 'mhinz/vim-signify'
+    nnoremap <SPACE>gd   :Gdiff<CR>
+    nnoremap <SPACE>gst  :Gstatus<CR>
+    nnoremap <SPACE>gbl  :Gblame<CR>
+    nnoremap <SPACE>gwch :Git! whatchanged -p --abbrev-commit --pretty=medium<CR>
+    nnoremap <SPACE>glol :Git log --graph --decorate --pretty=format:"\%Cred\%h\%Creset -\%C(auto)\%d\%Creset \%s \%Cgreen(\%cr) \%C(bold blue)<\%an>\%Creset"<CR>
 endif
 
 "----------------------------------------------------------------------
