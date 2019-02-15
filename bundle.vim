@@ -64,6 +64,8 @@ if index(g:bundle_group, 'basic') >= 0
 
     Plug 'scrooloose/nerdcommenter'
     map <silent> <A-/> <Plug>NERDCommenterToggle
+
+    Plug 'thinca/vim-quickrun'
 endif
 
 if index(g:bundle_group, 'git') >= 0
