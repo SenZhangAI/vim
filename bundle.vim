@@ -39,6 +39,8 @@ silent! if plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
 " package group - basic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'basic') >= 0
+    Plug 'iCyMind/NeoSolarized'
+
     Plug 'mhinz/vim-startify'
     noremap <space>ht :Startify<cr>
     noremap <space>hy :tabnew<cr>:Startify<cr>
@@ -131,7 +133,6 @@ endif
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
     Plug 'morhetz/gruvbox'
-    Plug 'iCyMind/NeoSolarized'
     Plug 'jszakmeister/vim-togglecursor'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
