@@ -321,6 +321,9 @@ if index(g:bundle_group, 'ale') >= 0
     Plug 'w0rp/ale'
 
     let g:airline#extensions#ale#enabled = 1
+    let g:ale_linter_aliases = {
+                \ 'vue': ['vue', 'javascript'],
+                \}
     let g:ale_linters = {
                 \ 'c': ['gcc', 'cppcheck'],
                 \ 'cpp': ['gcc', 'cppcheck'],
@@ -329,7 +332,18 @@ if index(g:bundle_group, 'ale') >= 0
                 \ 'go': ['go build', 'gofmt'],
                 \ 'java': ['javac'],
                 \ 'javascript': ['eslint'],
+                \ 'vue': ['eslint', 'vls'],
                 \ }
+    let g:ale_fixers= {
+                \ 'python': ['autopep8', 'yapf'],
+                \ }
+    " Do not lint or fix minified files
+    let g:ale_pattern_options = {
+                \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+                \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+                \}
+    " If you configure g:ale_pattern_options outside of vimrc, you need this.
+    let g:ale_pattern_options_enabled = 1
 
     function s:lintcfg(name)
         let conf = s:path('tools/config/')
@@ -356,6 +370,15 @@ if index(g:bundle_group, 'ale') >= 0
         let g:ale_linters.cpp += ['clang']
     endif
     nmap <A-CR> <Plug>(ale_fix)
+    "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    "nmap <silent> <C-j> <Plug>(ale_next_wrap)
+    "let g:ale_set_loclist = 0
+    "let g:ale_set_quickfix = 1
+    "let g:ale_open_list = 1
+    " Set this if you want to.
+    " This can be useful if you are combining ALE with
+    " some other plugin which sets quickfix errors, etc.
+    "let g:ale_keep_list_window_open = 1
 endif
 
 "----------------------------------------------------------------------
