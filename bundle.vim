@@ -278,6 +278,8 @@ if index(g:bundle_group, 'rainbow') >= 0
     let g:rainbow_conf = {
                 \   'guifgs': ['royalblue3', 'firebrick3', 'darkorange3',  'firebrick','seagreen3'],
                 \   'ctermfgs': ['blue', 'red', 'brown', 'lightblue', 'darkred',  'darkcyan', 'darkmagenta'],
+                \   'guis': [''],
+                \   'cterm': [''],
                 \   'operators': '_,_',
                 \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
                 \   'separately': {
