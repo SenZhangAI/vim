@@ -19,9 +19,6 @@ noremap <leader>wf :w !sudo tee > /dev/null %<CR><ESC>
 noremap j gj
 noremap k gk
 
-" cancel searched highlight
-nnoremap <SPACE>hh :nohlsearch<CR>
-
 nnoremap <leader>wa :wall<CR>
 
 " use arrow to shift buffer
@@ -31,13 +28,3 @@ noremap <right> :bn<CR>
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
-
-function! NumberToggle()
-    if(&rnu == 1)
-        set nornu
-    else
-        set rnu
-    endif
-endfunc
-
-nnoremap <F6> :call NumberToggle()<cr>

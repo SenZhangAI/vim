@@ -43,6 +43,8 @@ if index(g:bundle_group, 'basic') >= 0
     noremap <space>ht :Startify<cr>
     noremap <space>hy :tabnew<cr>:Startify<cr>
 
+    Plug 'tpope/vim-unimpaired'
+
     Plug 'Chiel92/vim-autoformat'
     Plug 'junegunn/vim-easy-align'
     " Start interactive EasyAlign in visual mode(e.g. vip<hotkey>)
