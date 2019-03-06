@@ -279,24 +279,45 @@ if index(g:bundle_group, 'rainbow') >= 0
                 \   'guifgs': ['royalblue3', 'firebrick3', 'darkorange3',  'firebrick','seagreen3'],
                 \   'ctermfgs': ['blue', 'red', 'brown', 'lightblue', 'darkred',  'darkcyan', 'darkmagenta'],
                 \   'guis': [''],
-                \   'cterm': [''],
+                \   'cterms': [''],
                 \   'operators': '_,_',
                 \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
                 \   'separately': {
                 \       '*': {},
-                \       'tex': {
-                \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-                \       },
                 \       'lisp': {
                 \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
                 \       },
+                \       'haskell': {
+                \           'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+                \       },
+                \       'tex': {
+                \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/(/ end=/)/ containedin=texDocZone', 'start=/\[/ end=/\]/ containedin=texDocZone'],
+                \       },
                 \       'vim': {
-                \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold                     containedin=vimFuncBody'],
+                \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+                \       },
+                \       'xml': {
+                \           'syn_name_prefix': 'xmlRainbow',
+                \           'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+                \       },
+                \       'xhtml': {
+                \           'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
                 \       },
                 \       'html': {
-                \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*       ))?)*\>/ end=#</\z1># fold'],
+                \           'parentheses': ['start=/\v\<((script|style|area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+                \       },
+                \       'perl': {
+                \           'syn_name_prefix': 'perlBlockFoldRainbow',
+                \       },
+                \       'php': {
+                \           'syn_name_prefix': 'phpBlockRainbow',
+                \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold', 'start=/(/ end=/)/ containedin=@htmlPreproc contains=@phpClTop', 'start=/\[/ end=/\]/ containedin=@htmlPreproc contains=@phpClTop', 'start=/{/ end=/}/ containedin=@htmlPreproc contains=@phpClTop'],
+                \       },
+                \       'stylus': {
+                \           'parentheses': ['start=/{/ end=/}/ fold contains=@colorableGroup'],
                 \       },
                 \       'css': 0,
+                \       'sh': 0,
                 \   }
                 \}
 endif
