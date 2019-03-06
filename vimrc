@@ -51,8 +51,8 @@ let g:neosolarized_bold = 1
 let g:neosolarized_underline = 1
 let g:neosolarized_italic = 0
 
-colorscheme NeoSolarized
 set background=dark
+colorscheme NeoSolarized
 
 if index(g:bundle_group, 'airline') >= 0
     let g:airline_theme='luna'
