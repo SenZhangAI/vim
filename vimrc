@@ -2,15 +2,17 @@ so ~/.vim/vim/import.vim
 
 let g:bundle_group = ['basic']
 
-call add(g:bundle_group, 'fantasic')
-call add(g:bundle_group, 'airline')
-call add(g:bundle_group, 'deoplete')
-call add(g:bundle_group, 'ale')
 call add(g:bundle_group, 'git')
+call add(g:bundle_group, 'fantasic')
 call add(g:bundle_group, 'cpp')
 call add(g:bundle_group, 'golang')
 call add(g:bundle_group, 'markdown')
 call add(g:bundle_group, 'terminus')
+call add(g:bundle_group, 'deoplete')
+call add(g:bundle_group, 'rainbow')
+call add(g:bundle_group, 'nerdtree')
+call add(g:bundle_group, 'airline')
+call add(g:bundle_group, 'ale')
 "call add(g:bundle_group, 'try')
 
 so ~/.vim/vim/bundle.vim
