@@ -28,3 +28,7 @@ noremap <right> :bn<CR>
 " Allow using the repeat operator with a visual selection (!)
 " http://stackoverflow.com/a/8064607/127816
 vnoremap . :normal .<CR>
+
+" Insert date
+:nnoremap <C-R>d "=strftime("%F")<CR>P
+:inoremap <C-R>d <C-R>=strftime("%F")<CR>
