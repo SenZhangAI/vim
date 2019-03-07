@@ -92,7 +92,6 @@ endif
 " package group - fantasic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
-    Plug 'morhetz/gruvbox'
     Plug 'jszakmeister/vim-togglecursor'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-repeat'
@@ -232,6 +231,11 @@ endif
 " Terminus enhances Vim's and Neovim's integration with the terminal in four ways, particularly when using tmux and iTerm or KDE Konsole, closing the gap between terminal and GUI Vim
 if index(g:bundle_group, 'terminus') >= 0
     Plug 'wincent/terminus'
+endif
+
+if index(g:bundle_group, 'themes') >= 0
+    Plug 'morhetz/gruvbox'
+    Plug 'mhartington/oceanic-next'
 endif
 
 " deoplete
