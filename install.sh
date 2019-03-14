@@ -11,7 +11,7 @@ backup_rand=$RANDOM
 
 backup_file() {
     if [ -L $1 ] || [ -f $1 ]; then
-        echo "There's a original file:[$1]exist."
+        echo "There's a original file [$1] exist."
         read -p "Would you like to backup it first? [y/n] " ans
 
         if [ "$ans" == "y" ]; then
