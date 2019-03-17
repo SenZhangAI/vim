@@ -8,3 +8,4 @@ Import include/general.vim
 Import include/fixkey.vim
 Import include/keymaps.vim
 Import include/ignores.vim
+Import include/plugins.vim
