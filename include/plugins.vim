@@ -10,7 +10,7 @@ let g:netrw_preview = 1
 let g:netrw_sort_options = 'i'
 
 if isdirectory(expand('~/.vim'))
-    let g:netrw_home = expand('~/.vim')
+  let g:netrw_home = expand('~/.vim')
 endif
 
 let g:netrw_timefmt = "%Y-%m-%d %H:%M:%S"
@@ -26,6 +26,6 @@ let s:ignore += ['.tar.gz', '.zip', '.7z', '.bz2', '.rar', '.jpg', '.png']
 let s:ignore += ['.chm', '.docx', '.xlsx', '.pptx', '.pdf', '.dll', '.pyd']
 
 for s:extname in s:ignore
-    let s:pattern = escape(s:extname, '.~') . '\($\|\t\),'
-    " let g:netrw_list_hide = s:pattern . g:netrw_list_hide
+  let s:pattern = escape(s:extname, '.~') . '\($\|\t\),'
+  " let g:netrw_list_hide = s:pattern . g:netrw_list_hide
 endfor

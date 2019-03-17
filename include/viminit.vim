@@ -25,6 +25,8 @@ autocmd FileType c,cpp,java setlocal formatoptions+=ro
 autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 
 " autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+
+autocmd FileType vim setlocal shiftwidth=2 tabstop=2 softtabstop=2
 " }}
 
 " Appearance {{
@@ -55,10 +57,10 @@ set smartcase
 
 " File encoding {{
 if has('multi_byte')
-    set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gbk,gb18030,big5,euc-jp,latin1
-    set fileencoding=utf-8
-    set encoding=utf-8
-    scriptencoding
+  set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gbk,gb18030,big5,euc-jp,latin1
+  set fileencoding=utf-8
+  set encoding=utf-8
+  scriptencoding
 endif
 " }}
 
@@ -77,11 +79,11 @@ syntax enable
 
 " Persistent undo {{
 if has('persistent_undo') "check if vim supports it
-    try
-        set undofile
-        set undodir=$HOME/.vim/.undo
-    catch
-    endtry
+  try
+    set undofile
+    set undodir=$HOME/.vim/.undo
+  catch
+  endtry
 endif
 set undolevels=100
 set history=200

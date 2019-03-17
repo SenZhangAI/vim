@@ -21,16 +21,16 @@ so ~/.vim/vim/bundle.vim
 
 " color scheme
 if has('termguicolors')
-    set termguicolors
+  set termguicolors
 endif
 
 if exists('$TMUX')
-    set term=xterm-256color
-    " hack to make vim work well in tmux
-    let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
-    let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
-    " add the line below to .tmux.conf file
-    " set-option -ga terminal-overrides ",xterm-256color:Tc"
+  set term=xterm-256color
+  " hack to make vim work well in tmux
+  let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+  let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  " add the line below to .tmux.conf file
+  " set-option -ga terminal-overrides ",xterm-256color:Tc"
 endif
 
 " default value is "normal", Setting this option to "high" or "low" does use the
@@ -57,9 +57,9 @@ set background=dark
 colorscheme NeoSolarized
 
 if index(g:bundle_group, 'airline') >= 0
-    let g:airline_theme='luna'
-    " tabline
-    let g:airline#extensions#tabline#enabled=1
-    let g:airline#extensions#tabline#buffer_nr_show=1
-    let g:airline#extensions#tabline#buffer_nr_format='%s:'
+  let g:airline_theme='luna'
+  " tabline
+  let g:airline#extensions#tabline#enabled=1
+  let g:airline#extensions#tabline#buffer_nr_show=1
+  let g:airline#extensions#tabline#buffer_nr_format='%s:'
 endif
