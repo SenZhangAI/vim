@@ -208,6 +208,11 @@ if index(g:bundle_group, 'cpp') >= 0
   Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 endif
 
+if index(g:bundle_group, 'python') >= 0
+  Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+  let g:pymode_python = 'python3'
+endif
+
 if index(g:bundle_group, 'golang') >= 0
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 endif
