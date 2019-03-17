@@ -1,4 +1,4 @@
-" BASIC
+" Basic
 set nocompatible
 
 set winaltkeys=no
@@ -7,7 +7,7 @@ set backspace=eol,start,indent
 " using clipboard cross application
 set clipboard=unnamed
 
-" INDENT
+" Indent config {{
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -25,8 +25,9 @@ autocmd FileType c,cpp,java setlocal formatoptions+=ro
 autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 
 " autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
+" }}
 
-" APPEARANCE
+" Appearance {{
 set number
 set relativenumber
 set numberwidth=6
@@ -39,37 +40,42 @@ set listchars=tab:^-,trail:-,eol:$,extends:>,precedes:<
 " cursorline switched while focus is switched to another split window
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
+" }}
 
 
-" menu
+" Menu {{
 set wildmenu
-set wildmode=longest:list,full
+set wildmode=list:longest,full
+" }}
 
 set hlsearch                          " search highlighting
 set incsearch                         " incremental search
 set ignorecase                        " ignore case when searching
 set smartcase
 
-" FORMAT
+" File encoding {{
 if has('multi_byte')
     set fileencodings=ucs-bom,utf-8,utf-16,gb2312,gbk,gb18030,big5,euc-jp,latin1
-    set fenc=utf-8
-    set enc=utf-8
+    set fileencoding=utf-8
+    set encoding=utf-8
     scriptencoding
 endif
+" }}
 
-" filetype & syntax setting
+" Filetype & syntax {{
 filetype on                           " enable filetype detection
 filetype indent on                    " enable filetype-specific indenting
 filetype plugin on                    " enable filetype-specific plugins
 syntax enable
+" }}
 
-" SAVING
+" Saving backup {{
 "set nobackup
 "set nowritebackup
 "set noswapfile
-"
-" Persistent undo
+" }}
+
+" Persistent undo {{
 if has('persistent_undo') "check if vim supports it
     try
         set undofile
@@ -80,17 +86,27 @@ endif
 set undolevels=100
 set history=200
 set viminfo^=%                        " Remember info about open buffers on close
+" }}
 
-"set autosave
+" Autosave {{
 set swapfile
 autocmd FocusLost * silent! wa
 autocmd InsertLeave * silent! wa
+" }}
 
-" remove tailing whitespace
+" complete config {{
+set complete+=k "TODO
+set completeopt=menu,preview
+" }}
+
+" remove tailing whitespace {{
 autocmd BufWritePre * :%s/\s\+$//e
+" }}
 
 " set cursor to last position when reopen
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " make gitgutter faster
 set updatetime=500
+
+" vim: set foldmarker={{,}} foldmethod=marker foldlevel=0:
