@@ -218,16 +218,20 @@ if index(g:bundle_group, 'golang') >= 0
 endif
 
 if index(g:bundle_group, 'markdown') >= 0
-  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
+  Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   " LaTex math: support $x^2$, $$x^2$$ syntax
   let g:tex_conceal = ""
-  let g:vim_markdown_math=1
+  let g:vim_markdown_math = 1
   " Highlight YAML frontmatter as used by jekyll
-  let g:vim_markdown_frontmatter=1
+  let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_conceal = 0
   let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_no_extensions_in_markdown = 1
+  let g:vim_markdown_strikethrough = 1
+  let g:vim_markdown_new_list_item_indent = 2
+  "let g:vim_markdown_new_list_item_indent = 0
+  let g:vim_markdown_auto_insert_bullets = 1
 endif
 
 if index(g:bundle_group, 'haskell') >= 0

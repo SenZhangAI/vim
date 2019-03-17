@@ -15,6 +15,7 @@ set updatetime=500
 "n: smart indent numbered lists. "TODO I don't know what about it.
 "B: When joining lines, don't insert a space between two multi-byte character
 set formatoptions+=Bnj
+set formatlistpat=^\\s*\\(\\d\\\|\\a\\)\\+[\\]:.)}\\t]\\s*
 au BufEnter * set fo-=c fo-=r fo-=o "don't insert comment automatically
 
 set expandtab
