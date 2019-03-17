@@ -234,6 +234,10 @@ if index(g:bundle_group, 'markdown') >= 0
   let g:vim_markdown_auto_insert_bullets = 1
 endif
 
+if index(g:bundle_group, 'markdown-preview') >= 0
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+endif
+
 if index(g:bundle_group, 'haskell') >= 0
   Plug 'neovimhaskell/haskell-vim', { 'for': ['haskell', 'cabal'] }
   let g:haskell_enable_quantification = 1   " to enable highlighting of `forall`
