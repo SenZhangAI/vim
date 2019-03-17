@@ -4,7 +4,7 @@ command! -nargs=1 Import exec 'so '.s:home.'/'.'<args>'
 " add to runtimepath
 exec 'set rtp+='.s:home
 
-Import include/viminit.vim
+Import include/general.vim
 Import include/fixkey.vim
 Import include/keymaps.vim
 Import include/ignores.vim
