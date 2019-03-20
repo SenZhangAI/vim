@@ -21,6 +21,14 @@ noremap k gk
 
 nnoremap <leader>wa :wall<CR>
 
+
+function! AutoEncoding()
+  exec "set fileencoding=utf-8"
+  exec "set ff=unix"
+endfunc
+
+nnoremap <leader>ae :call AutoEncoding()<CR>
+
 " use arrow to shift buffer
 noremap <left> :bp<CR>
 noremap <right> :bn<CR>
