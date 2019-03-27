@@ -6,6 +6,9 @@ set backspace=eol,start,indent
 
 " using clipboard cross application
 set clipboard=unnamed
+if has('unnamedplus')
+  set clipboard^=unnamedplus
+endif
 
 set updatetime=500
 
@@ -91,6 +94,7 @@ autocmd BufWritePre * :%s/\s\+$//e " remove tailing whitespace
 "set noswapfile
 
 set swapfile
+set autowriteall
 autocmd FocusLost * silent! wa "autosave
 autocmd InsertLeave * silent! wa
 
