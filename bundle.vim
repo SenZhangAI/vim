@@ -46,6 +46,8 @@ if index(g:bundle_group, 'basic') >= 0
   Plug 'tpope/vim-unimpaired'
 
   Plug 'Chiel92/vim-autoformat'
+  let g:formatdef_clangformat = "'clang-format -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=\"{BasedOnStyle: LLVM, AlignConsecutiveAssignments: true, AlignConsecutiveDeclarations: true, AlignTrailingComments: true, AllowShortBlocksOnASingleLine: true, FixNamespaceComments: true, BreakBeforeBraces: Linux, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, IndentPPDirectives: AfterHash, '.(&textwidth ? 'ColumnLimit: '.&textwidth.', ' : '').(&expandtab ? 'UseTab: Never, IndentWidth: '.shiftwidth() : 'UseTab: Always').'}\"'"
+
   Plug 'junegunn/vim-easy-align'
   " Start interactive EasyAlign in visual mode(e.g. vip<hotkey>)
   vmap \= <Plug>(EasyAlign)
