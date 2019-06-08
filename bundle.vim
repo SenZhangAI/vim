@@ -182,6 +182,11 @@ if index(g:bundle_group, 'python') >= 0
   let g:pymode_python = 'python3'
 endif
 
+if index(g:bundle_group, 'rust') >= 0
+  Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+  let g:rustfmt_autosave = 1
+endif
+
 if index(g:bundle_group, 'golang') >= 0
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'zchee/deoplete-go'

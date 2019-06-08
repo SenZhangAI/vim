@@ -5,6 +5,7 @@ let g:bundle_group = ['basic']
 call add(g:bundle_group, 'git')
 call add(g:bundle_group, 'fantasic')
 call add(g:bundle_group, 'cpp')
+call add(g:bundle_group, 'rust')
 "call add(g:bundle_group, 'python')
 "call add(g:bundle_group, 'golang')
 call add(g:bundle_group, 'haskell')
