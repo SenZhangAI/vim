@@ -30,7 +30,7 @@ backup_file $gvim_rc
 backup_file $nvim_rc
 
 cp $vim_dir/vimrc $vim_rc
-cp $vim_dir/vimrc $nvim_rc
+ln -s $vim_rc $nvim_rc
 cp $vim_dir/gvimrc $gvim_rc
 
 ## install plugin
