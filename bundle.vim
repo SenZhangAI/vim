@@ -452,11 +452,11 @@ if index(g:bundle_group, 'nerdtree') >= 0
   let g:nerdtree_tabs_focus_on_files=1
   let g:nerdtree_tabs_open_on_gui_startup=0
   " Appearance
-  let g:NERDTreeWinSize = 35
+  "let g:NERDTreeWinSize = 35
   let g:NERDTreeMinimalUI = 1
   let g:NERDTreeDirArrows = 1
-  noremap <leader>n :NERDTreeFind<cr>
-  noremap <space>nn :NERDTreeToggle<cr>
+  noremap <leader>n :NERDTreeToggle<cr>
+  noremap <space>nn :NERDTreeFind<cr>
   noremap <space>to :NERDTreeFocus<cr>
   noremap <space>tm :NERDTreeMirror<cr>
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
