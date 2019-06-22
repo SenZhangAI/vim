@@ -455,8 +455,9 @@ if index(g:bundle_group, 'nerdtree') >= 0
   "let g:NERDTreeWinSize = 35
   let g:NERDTreeMinimalUI = 1
   let g:NERDTreeDirArrows = 1
-  noremap <leader>n :NERDTreeToggle<cr>
-  noremap <space>nn :NERDTreeFind<cr>
+  noremap <leader>n :NERDTreeFind<cr>
+  noremap <leader>m :NERDTreeClose<cr>
+  noremap <space>nn :NERDTreeToggle<cr>
   noremap <space>to :NERDTreeFocus<cr>
   noremap <space>tm :NERDTreeMirror<cr>
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
