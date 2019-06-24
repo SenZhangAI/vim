@@ -1,7 +1,7 @@
 let mapleader=','
 let g:mapleader=','
 
-inoremap jk <ESC>
+inoremap jk <ESC>`^
 
 " move lines up and down using ctrl+[jk]
 nmap <C-k> mz:m-2<cr>`z
