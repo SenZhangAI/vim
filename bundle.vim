@@ -101,6 +101,10 @@ if index(g:bundle_group, 'fantasic') >= 0
   Plug 'zhaocai/GoldenView.Vim'
   let g:goldenview__enable_default_mapping = 0
 
+  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  nnoremap <silent> <leader> :WhichKey ','<CR>
+  set timeoutlen=500
+
   Plug 'osyo-manga/vim-over'
   noremap <Leader>; :OverCommandLine<CR>
 
