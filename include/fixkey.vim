@@ -75,3 +75,19 @@ endfunc
 
 call Terminal_MetaMode(0)
 call Terminal_FnInit(1)
+
+
+let s:iterm=
+      \ exists('$ITERM_PROFILE') ||
+      \ exists('$ITERM_SESSION_ID') ||
+      \ exists('g:TerminusAssumeITerm') ||
+      \ filereadable(expand('~/.vim/.assume-iterm'))
+let s:iterm2=
+      \ s:iterm &&
+      \ exists('$TERM_PROGRAM_VERSION') &&
+      \ match($TERM_PROGRAM_VERSION, '\v^[2-9]\.') == 0
+
+if s:iterm2
+  vmap "+y :w !pbcopy<CR><CR>
+  nmap "+p :r !pbpaste<CR><CR>
+end
