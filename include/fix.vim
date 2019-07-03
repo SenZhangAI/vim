@@ -91,3 +91,6 @@ if s:iterm2
   vmap "+y :w !pbcopy<CR><CR>
   nmap "+p :r !pbpaste<CR><CR>
 end
+
+"add Comment support for json
+autocmd FileType json syntax match Comment +\/\/.\+$+
