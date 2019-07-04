@@ -209,8 +209,10 @@ if index(g:bundle_group, 'rust') >= 0
 endif
 
 if index(g:bundle_group, 'golang') >= 0
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'zchee/deoplete-go'
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+  if index(g:bundle_group, 'deoplete') >= 0
+    Plug 'zchee/deoplete-go'
+  endif
 
   " see https://github.com/fatih/vim-go-tutorial
   let g:go_fmt_command = "goimports"
@@ -490,6 +492,11 @@ if index(g:bundle_group, 'rainbow') >= 0
         \       'sh': 0,
         \   }
         \}
+endif
+
+if index(g:bundle_group, 'tagbar') >= 0
+  Plug 'majutsushi/tagbar'
+  noremap cot :TagbarToggle<cr>
 endif
 
 if index(g:bundle_group, 'nerdtree') >= 0
