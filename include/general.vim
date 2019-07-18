@@ -40,6 +40,8 @@ autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 " autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
 
 autocmd FileType vim setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+autocmd FileType html setlocal sw=2 ts=2 sts=2
 " }}}
 
 " Appearance {{{
