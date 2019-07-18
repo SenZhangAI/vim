@@ -31,12 +31,19 @@ if has('termguicolors')
 endif
 
 if exists('$TMUX')
-  set term=xterm-256color
   " hack to make vim work well in tmux
   let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
   let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+  set t_Co=256
   " add the line below to .tmux.conf file
-  " set-option -ga terminal-overrides ",xterm-256color:Tc"
+  " set-option -ga terminal-overrides ",screen-256color:Tc"
+endif
+
+if &term =~ '256color'
+  " disable Background Color Erase (BCE) so that color schemes
+  " render properly when inside 256-color tmux and GNU screen.
+  " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
 endif
 
 " default value is "normal", Setting this option to "high" or "low" does use the
