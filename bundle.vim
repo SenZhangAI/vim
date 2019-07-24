@@ -67,7 +67,7 @@ if index(g:bundle_group, 'basic') >= 0
   imap <C-d> <Plug>delimitMateJumpMany
 
   Plug 'scrooloose/nerdcommenter'
-  map <silent> <A-/> <Plug>NERDCommenterToggle
+  map <silent> \\ <Plug>NERDCommenterToggle
 
   Plug 'thinca/vim-quickrun'
 endif
