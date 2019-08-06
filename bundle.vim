@@ -301,7 +301,7 @@ endif
 
 if index(g:bundle_group, 'markdown-preview') >= 0
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
-  autocmd FileType markdown nnoremap <buffer> <leader>r <Plug>MarkdownPreview
+  autocmd FileType markdown nnoremap <buffer> <leader>r :MarkdownPreview<CR>
 endif
 
 if index(g:bundle_group, 'haskell') >= 0

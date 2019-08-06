@@ -7,9 +7,12 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 1. Make sure you install [node](https://nodejs.org/en/) and [yarn](https://github.com/yarnpkg/yarn) first if you want ot use [markdown-preview](https://github.com/iamcco/markdown-preview.nvim).
 2. Install vim plugins by following script
+
 ```sh
  ./install.sh
 ```
+
+3. Install Coc extensions if needed, for example `:CocInstall coc-snippets`
 
 ## Reference
 
