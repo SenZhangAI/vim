@@ -301,6 +301,7 @@ endif
 
 if index(g:bundle_group, 'markdown-preview') >= 0
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+  autocmd FileType markdown nnoremap <buffer> <leader>r <Plug>MarkdownPreview
 endif
 
 if index(g:bundle_group, 'haskell') >= 0
@@ -382,7 +383,6 @@ endif
 " coc
 if index(g:bundle_group, 'coc') >= 0
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'neoclide/coc-snippets'
   Plug 'honza/vim-snippets'
 
   " use <tab> for trigger completion and navigate to the next complete item
