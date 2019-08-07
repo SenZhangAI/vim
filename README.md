@@ -12,8 +12,6 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
  ./install.sh
 ```
 
-3. Install Coc extensions if needed, for example `:CocInstall coc-snippets`
-
 ## Reference
 
 [skywind-vimrc](https://github.com/skywind3000/vim)

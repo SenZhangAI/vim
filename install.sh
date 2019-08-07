@@ -12,7 +12,7 @@ backup_rand=$RANDOM
 backup_file() {
     if [ -L $1 ] || [ -f $1 ]; then
         echo "There's a original file [$1] exist."
-        read -p "Would you like to backup it first? [y/n] " ans
+        read -p "Would you like to backup it first? [y/N] " ans
 
         if [ "$ans" == "y" ]; then
             echo "backup your original $1 to $1-$(date +%Y%m%d)-$backup_rand-bak"
@@ -37,3 +37,8 @@ cp $vim_dir/gvimrc $gvim_rc
 vim +PlugInstall +qall
 
 mkdir -p $HOME/.vim/.undo
+
+read -p "Would you want to install cac-extensions ? [Y/n] " ans
+if [ "$ans" == "y" ]; then
+    vim -c "CocInstall -sync coc-snippets coc-rls | qall"
+fi
