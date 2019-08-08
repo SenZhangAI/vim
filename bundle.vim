@@ -382,7 +382,7 @@ endif
 
 " coc
 if index(g:bundle_group, 'coc') >= 0
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
   Plug 'honza/vim-snippets'
 
   " use <tab> for trigger completion and navigate to the next complete item

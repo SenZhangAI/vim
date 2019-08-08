@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# set vim dir
+set -e
+
 vim_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 vim_rc=$HOME/.vimrc
@@ -19,8 +20,7 @@ backup_file() {
             cp $1 $1$(date +%Y%m%d)-$backup_rand-bak
         fi
 
-        rm $1
-        return 1;
+        rm -f $1
     fi
     return 0;
 }
