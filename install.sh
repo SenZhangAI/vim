@@ -34,11 +34,11 @@ ln -s $vim_rc $nvim_rc
 cp $vim_dir/gvimrc $gvim_rc
 
 ## install plugin
-vim +PlugInstall +qall
+vim -c "PlugInstall | qall"
 
 mkdir -p $HOME/.vim/.undo
 
 read -p "Would you want to install cac-extensions ? [Y/n] " ans
-if [ "$ans" == "y" ]; then
+if [ "$ans" != "n" ]; then
     vim -c "CocInstall -sync coc-snippets coc-rls | qall"
 fi
