@@ -430,6 +430,8 @@ if index(g:bundle_group, 'coc') >= 0
 
   let g:coc_snippet_next = '<tab>'
 
+  "coc-yank  <C-j> <C-k> up & down list
+  nnoremap <silent> <SPACE>p  :<C-u>CocList -A yank<CR>
 endif
 
 " deoplete

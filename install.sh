@@ -40,5 +40,6 @@ mkdir -p $HOME/.vim/.undo
 
 read -p "Would you want to install cac-extensions ? [Y/n] " ans
 if [ "$ans" != "n" ]; then
-    vim -c "CocInstall -sync coc-snippets coc-rls | qall"
+    # coc-rls for rust
+    vim -c "CocInstall -sync coc-snippets coc-yank coc-rls | qall"
 fi
