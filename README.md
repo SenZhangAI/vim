@@ -1,6 +1,7 @@
 ## Description
 
-My (neo)vim config files,
+My (neo)vim config files, Only support neovim and vim 8+
+
 Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 ## Install
