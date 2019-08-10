@@ -38,6 +38,9 @@ vim -c "PlugInstall | qall"
 
 mkdir -p $HOME/.vim/.undo
 
+ln -s $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
+ln -s $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
+
 read -p "Would you want to install cac-extensions ? [Y/n] " ans
 if [ "$ans" != "n" ]; then
     # coc-rls for rust
