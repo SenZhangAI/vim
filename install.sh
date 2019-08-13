@@ -7,7 +7,6 @@ vim_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 command_installed() {
     printf "%-48s" "Check if $1 installed..."
     found=$(which $1)
-    echo "found $found"
     if [ "$found" == "" ]; then
         printf "Not Installed\n"
         return 1
@@ -52,20 +51,19 @@ backup_file $gvim_rc
 backup_file $nvim_rc
 
 cp $vim_dir/vimrc $vim_rc
-ln -s $vim_rc $nvim_rc
+ln -sfn $vim_rc $nvim_rc
 cp $vim_dir/gvimrc $gvim_rc
 
 ## install plugin
-$_vim -c "PlugInstall | qall"
+$_vim -c "PlugInstall | qall" || echo "error happend when installing plugins..."
 
 mkdir -p $HOME/.vim/.undo
-
-ln -s $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
-ln -s $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
+ln -sfn $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
+ln -sfn $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
 read -p "Would you want to install cac-extensions ? [Y/n] " ans
 if [ "$ans" != "n" ]; then
     # coc-rls for rust
-    $_vim -c "CocInstall -sync coc-snippets coc-yank coc-rls | qall"
+    $_vim -c "CocInstall -sync coc-snippets coc-yank coc-rls | qall" || echo "error happend when running CocInstall"
 fi
 unset _vim
