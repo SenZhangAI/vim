@@ -61,9 +61,5 @@ mkdir -p $HOME/.vim/.undo
 ln -sfn $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
 ln -sfn $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
-read -p "Would you want to install cac-extensions ? [Y/n] " ans
-if [ "$ans" != "n" ]; then
-    # coc-rls for rust
-    $_vim -c "CocInstall -sync coc-snippets coc-yank coc-rls | qall" || echo "error happend when running CocInstall"
-fi
+$_vim -c "CocInstall -sync coc-snippets coc-yank coc-rls | qall" || echo "error happend when running CocInstall"
 unset _vim
