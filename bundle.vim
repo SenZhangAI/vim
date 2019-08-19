@@ -436,6 +436,17 @@ if index(g:bundle_group, 'coc') >= 0
 
   "coc-yank  <C-j> <C-k> up & down list
   nnoremap <silent> <SPACE>p  :<C-u>CocList -A yank<CR>
+
+  " Remap for rename current word
+  nmap <leader>rn <Plug>(coc-rename)
+
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gy <Plug>(coc-type-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+
+  " show function signature automatically, experiments
+  "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 endif
 
 " deoplete

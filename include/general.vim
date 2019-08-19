@@ -48,6 +48,7 @@ set numberwidth=6
 set ruler
 set cursorline
 set scrolloff=3
+set cmdheight=2
 set wrap
 set linebreak
 set listchars=tab:^-,trail:-,eol:$,extends:>,precedes:<
