@@ -14,6 +14,23 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 ## Others
 
+### COC
+
+[coc.nvim](https://github.com/neoclide/coc.nvim) is awesome!!!
+
+use [coc-marketplace](https://github.com/fannheyward/coc-marketplace), you can search many useful extensions
+
+`:CocList marketplace` list all available extensions
+`:CocList marketplace python` to search extension that name contains python
+
+### golang support
+
+install golang LSP server see <https://github.com/golang/go/wiki/gopls>
+
+```sh
+GO111MODULE=on go get golang.org/x/tools/gopls@latest
+```
+
 ### julia support
 julia coc support see <https://github.com/neoclide/coc.nvim/wiki/Language-servers#julia>
 
