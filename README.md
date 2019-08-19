@@ -8,9 +8,20 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 1. Make sure you install [node](https://nodejs.org/en/) and [yarn](https://github.com/yarnpkg/yarn) first if you want ot use [markdown-preview](https://github.com/iamcco/markdown-preview.nvim).
 2. Install vim plugins by following script
-
 ```sh
  ./install.sh
+```
+
+## Others
+
+### julia support
+julia coc support see <https://github.com/neoclide/coc.nvim/wiki/Language-servers#julia>
+
+```julia
+julia> using Pkg
+julia> Pkg.add("LanguageServer")
+julia> Pkg.add("SymbolServer")
+julia> Pkg.add("StaticLint")
 ```
 
 ## Reference

@@ -208,6 +208,10 @@ if index(g:bundle_group, 'rust') >= 0
   let g:rustfmt_autosave = 1
 endif
 
+if index(g:bundle_group, 'julia') >= 0
+  Plug 'JuliaEditorSupport/julia-vim', { 'for': ['julia'] }
+endif
+
 if index(g:bundle_group, 'golang') >= 0
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   if index(g:bundle_group, 'deoplete') >= 0

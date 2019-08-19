@@ -28,6 +28,13 @@
                     "completionSnippetsOn": true
                 }
             }
+        },
+        "julia": {
+            "command": "julia",
+            "args" : ["--startup-file=no", "--history-file=no", "-e",
+                "using LanguageServer;\nusing Pkg;\nimport StaticLint;\nimport SymbolServer;\nenv_path = dirname(Pkg.Types.Context().env.project_file);\ndebug = false;\nserver = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict());\nserver.runlinter = true;\n run(server);"
+            ],
+            "filetypes": ["julia"]
         }
     }
 }
