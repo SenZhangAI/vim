@@ -438,12 +438,16 @@ if index(g:bundle_group, 'coc') >= 0
   nnoremap <silent> <SPACE>p  :<C-u>CocList -A yank<CR>
 
   " Remap for rename current word
-  nmap <leader>rn <Plug>(coc-rename)
+  nnoremap <leader>rn <Plug>(coc-rename)
 
-  nmap <silent> gd <Plug>(coc-definition)
-  nmap <silent> gy <Plug>(coc-type-definition)
-  nmap <silent> gi <Plug>(coc-implementation)
-  nmap <silent> gr <Plug>(coc-references)
+  nnoremap <silent> gd <Plug>(coc-definition)
+  nnoremap <silent> gy <Plug>(coc-type-definition)
+  nnoremap <silent> gi <Plug>(coc-implementation)
+  nnoremap <silent> gr <Plug>(coc-references)
+
+  " format for julia etc.
+  " TODO need fixed in future
+  "nnoremap <leader>f  :CocAction('format')<CR>
 
   " show function signature automatically, experiments
   "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')

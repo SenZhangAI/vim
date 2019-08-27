@@ -18,10 +18,16 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 [coc.nvim](https://github.com/neoclide/coc.nvim) is awesome!!!
 
+#### coc-marketplace
+
 use [coc-marketplace](https://github.com/fannheyward/coc-marketplace), you can search many useful extensions
 
 `:CocList marketplace` list all available extensions
 `:CocList marketplace python` to search extension that name contains python
+
+#### Debug language server
+
+see <https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel>
 
 ### golang support
 
