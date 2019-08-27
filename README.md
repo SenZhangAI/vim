@@ -34,7 +34,7 @@ see <https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-outpu
 install golang LSP server see <https://github.com/golang/go/wiki/gopls>
 
 ```sh
-GO111MODULE=on go get golang.org/x/tools/gopls@latest
+$ GO111MODULE=on go get golang.org/x/tools/gopls@latest
 ```
 
 ### julia support
@@ -46,6 +46,22 @@ julia> Pkg.add("LanguageServer")
 julia> Pkg.add("SymbolServer")
 julia> Pkg.add("StaticLint")
 ```
+
+### vim support
+
+syntax checker for vim，see <https://github.com/mattn/efm-langserver>
+
+```sh
+# install vim syntax checker see https://github.com/Kuniwak/vint
+$ pip3 install vim-vint
+
+# install lsp for vim
+$ go get github.com/mattn/efm-langserver
+```
+
+config efm-langserver
+
+<https://github.com/mattn/efm-langserver#example-for-configyaml>
 
 ## Reference
 

@@ -35,6 +35,13 @@
                 "using LanguageServer;\nusing Pkg;\nimport StaticLint;\nimport SymbolServer;\nenv_path = dirname(Pkg.Types.Context().env.project_file);\ndebug = false;\nserver = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, \"\", Dict());\nserver.runlinter = true;\n run(server);"
             ],
             "filetypes": ["julia"]
+        },
+        "efm": {
+            "command": "efm-langserver",
+            "args": [],
+            "trace.server": "verbose",
+            //"args": ["-c", "$HOME/.vim/vim/efm_config.yaml"], //TODO bug exist
+            "filetypes": ["vim", "eruby", "markdown", "yaml"]
         }
     }
 }
