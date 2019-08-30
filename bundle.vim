@@ -97,6 +97,13 @@ if index(g:bundle_group, 'fantasic') >= 0
   Plug 'jszakmeister/vim-togglecursor'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-projectionist'
+  let g:projectionist_heuristics = {
+      \   "CProjects/" : {
+      \       "*.c": { "alternate": "{}.h" },
+      \       "*.h": { "alternate": "{}.c" }
+      \   }
+      \ }
 
   Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -194,7 +201,6 @@ endif
 " language spec
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'cpp') >= 0
-  Plug 'nacitar/a.vim', { 'for': ['c', 'cpp'] }
   Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
 endif
 
@@ -358,7 +364,7 @@ if index(g:bundle_group, 'tags') >= 0
     let g:gutentags_modules += ['gtags_cscope']
   endif
   "let g:gutentags_trace = 1 " debug for gutentags
-  let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundles/*"]
+  let g:gutentags_ctags_exclude = ['*.min.js', '*.min.css', 'build', 'vendor', '.git', 'node_modules', '*.vim/bundles/*']
 
   set tags=./.tags;,.tags
 
@@ -446,8 +452,8 @@ if index(g:bundle_group, 'coc') >= 0
   nnoremap <silent> gr <Plug>(coc-references)
 
   " format for julia etc.
-  " TODO need fixed in future
-  "nnoremap <leader>f  :CocAction('format')<CR>
+  " TODO need fixed in future,can not work for julia at this moment
+  nnoremap <leader>f  <Plug>(coc-format)
 
   " show function signature automatically, experiments
   "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
