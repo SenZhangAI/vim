@@ -198,7 +198,11 @@ if index(g:bundle_group, 'fantasic') >= 0
   " vim easy debug
   Plug 'tpope/vim-scriptease'
 
+  " switch camelCase, UpperCase and so on
   Plug 'tpope/vim-abolish'
+
+  " show character in decimal, octal, and hex, unicode and so on
+  Plug 'tpope/vim-characterize'
 endif
 
 "----------------------------------------------------------------------
