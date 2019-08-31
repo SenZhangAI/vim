@@ -99,9 +99,9 @@ if index(g:bundle_group, 'fantasic') >= 0
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-projectionist'
   let g:projectionist_heuristics = {
-      \   "CProjects/" : {
-      \       "*.c": { "alternate": "{}.h" },
-      \       "*.h": { "alternate": "{}.c" }
+      \   'CProjects/' : {
+      \       '*.c': { 'alternate': '{}.h' },
+      \       '*.h': { 'alternate': '{}.c' }
       \   }
       \ }
 
@@ -161,12 +161,12 @@ if index(g:bundle_group, 'fantasic') >= 0
     let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
     let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
     let g:Lf_NormalMap = {
-          \ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
-          \ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
-          \ "Mru": [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
-          \ "Tag": [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
-          \ "BufTag": [["<ESC>", ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
-          \ "Function": [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
+          \ 'File':   [['<ESC>', ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+          \ 'Buffer': [['<ESC>', ':exec g:Lf_py "bufExplManager.quit()"<cr>']],
+          \ 'Mru': [['<ESC>', ':exec g:Lf_py "mruExplManager.quit()"<cr>']],
+          \ 'Tag': [['<ESC>', ':exec g:Lf_py "tagExplManager.quit()"<cr>']],
+          \ 'BufTag': [['<ESC>', ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
+          \ 'Function': [['<ESC>', ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
           \ }
   else
     Plug 'ctrlpvim/ctrlp.vim'
@@ -225,9 +225,9 @@ if index(g:bundle_group, 'golang') >= 0
   endif
 
   " see https://github.com/fatih/vim-go-tutorial
-  let g:go_fmt_command = "goimports"
+  let g:go_fmt_command = 'goimports'
   let g:go_autodetect_gopath = 1
-  let g:go_list_type = "quickfix"
+  let g:go_list_type = 'quickfix'
 
   let g:go_highlight_types = 1
   let g:go_highlight_fields = 1
@@ -296,7 +296,7 @@ if index(g:bundle_group, 'markdown') >= 0
   Plug 'dhruvasagar/vim-table-mode', { 'for': 'markdown' } " use this to edit table
   Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
   " LaTex math: support $x^2$, $$x^2$$ syntax
-  let g:tex_conceal = ""
+  let g:tex_conceal = ''
   let g:vim_markdown_math = 1
   " Highlight YAML frontmatter as used by jekyll
   let g:vim_markdown_frontmatter = 1
@@ -398,7 +398,7 @@ if index(g:bundle_group, 'coc') >= 0
   " use <tab> for trigger completion and navigate to the next complete item
   function! s:check_back_space() abort
     let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
+    return !col || getline('.')[col - 1]  =~? '\s'
   endfunction
 
   " use <Tab> and <S-Tab> to navigate the completion list

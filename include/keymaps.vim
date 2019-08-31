@@ -23,8 +23,8 @@ nnoremap <leader>wa :wall<CR>
 
 
 function! AutoEncoding()
-  exec "set fileencoding=utf-8"
-  exec "set ff=unix"
+  exec 'set fileencoding=utf-8'
+  exec 'set ff=unix'
 endfunc
 
 nnoremap <leader>ae :call AutoEncoding()<CR>
@@ -57,9 +57,9 @@ function! ToggleList(bufname, pfx)
       return
     endif
   endfor
-  if a:pfx == 'l' && len(getloclist(0)) == 0
+  if a:pfx ==# 'l' && len(getloclist(0)) == 0
     echohl ErrorMsg
-    echo "Location List is Empty."
+    echo 'Location List is Empty.'
     return
   endif
   let winnr = winnr()
@@ -69,5 +69,6 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 
+" more toggle function see: <https://github.com/tpope/vim-unimpaired/blob/master/doc/unimpaired.txt>
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
-nmap <silent> coq :call ToggleList("Quickfix List", 'c')<CR>
+nmap <silent> yoq :call ToggleList("Quickfix List", 'c')<CR>

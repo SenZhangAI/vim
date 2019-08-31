@@ -11,7 +11,7 @@ if isdirectory(expand('~/.vim'))
   let g:netrw_home = expand('~/.vim')
 endif
 
-let g:netrw_timefmt = "%Y-%m-%d %H:%M:%S"
+let g:netrw_timefmt = '%Y-%m-%d %H:%M:%S'
 
 "let g:netrw_banner=0
 "let g:netrw_browse_split=4   " open in prior window
