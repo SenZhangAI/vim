@@ -194,6 +194,9 @@ if index(g:bundle_group, 'fantasic') >= 0
   vmap <silent> <Leader>vr <plug>EgMapReplaceSelection_r
   map <silent> <S-F6> <plug>EgMapReplaceCurrentWord_r
   vmap <silent> <S-F6> <plug>EgMapReplaceSelection_r
+
+  " vim easy debug
+  Plug 'tpope/vim-scriptease'
 endif
 
 "----------------------------------------------------------------------

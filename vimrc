@@ -40,7 +40,7 @@ if exists('$TMUX')
   " set-option -ga terminal-overrides ",screen-256color:Tc"
 endif
 
-if &term =~ '256color'
+if &term =~? '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
@@ -50,12 +50,12 @@ endif
 " default value is "normal", Setting this option to "high" or "low" does use the
 " same Solarized palette but simply shifts some values up or down in order to
 " expand or compress the tonal range displayed.
-let g:neosolarized_contrast = "high"
+let g:neosolarized_contrast = 'high'
 
 " Special characters such as trailing whitespace, tabs, newlines, when displayed
 " using ":set list" can be set to one of three levels depending on your needs.
 " Default value is "normal". Provide "high" and "low" options.
-let g:neosolarized_visibility = "low"
+let g:neosolarized_visibility = 'low'
 
 " I make vertSplitBar a transparent background color. If you like the origin solarized vertSplitBar
 " style more, set this value to 0.
