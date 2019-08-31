@@ -66,8 +66,7 @@ if index(g:bundle_group, 'basic') >= 0
   au FileType c,cpp,java let b:delimitMate_eol_marker = ";"
   imap <C-d> <Plug>delimitMateJumpMany
 
-  Plug 'scrooloose/nerdcommenter'
-  map <silent> \\ <Plug>NERDCommenterToggle
+  Plug 'tpope/vim-commentary'
 
   Plug 'thinca/vim-quickrun'
 endif
