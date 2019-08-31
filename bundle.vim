@@ -197,6 +197,8 @@ if index(g:bundle_group, 'fantasic') >= 0
 
   " vim easy debug
   Plug 'tpope/vim-scriptease'
+
+  Plug 'tpope/vim-abolish'
 endif
 
 "----------------------------------------------------------------------
