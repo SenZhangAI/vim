@@ -69,6 +69,7 @@ if index(g:bundle_group, 'basic') >= 0
   Plug 'tpope/vim-commentary'
 
   Plug 'thinca/vim-quickrun'
+  Plug 'SenZhangAI/vim-quickrun-neovim-job'
   if has('job')
     let g:quickrun_config = {
           \ '_': {
@@ -76,15 +77,15 @@ if index(g:bundle_group, 'basic') >= 0
           \   'runner': 'job',
           \   'cmdopt': '',
           \   'args': '',
-          \   'tempfile'  : '124.txt',
+          \   'tempfile'  : '%{tempname()}',
           \   'exec': '%c %o %s %a',
           \ }
           \}
-  else
+  elseif has('nvim')
     let g:quickrun_config = {
           \ '_': {
           \   'outputter': 'buffer',
-          \   'runner': 'system',
+          \   'runner': 'jobstart',
           \   'cmdopt': '',
           \   'args': '',
           \   'tempfile'  : '%{tempname()}',
