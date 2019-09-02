@@ -69,6 +69,29 @@ if index(g:bundle_group, 'basic') >= 0
   Plug 'tpope/vim-commentary'
 
   Plug 'thinca/vim-quickrun'
+  if has('job')
+    let g:quickrun_config = {
+          \ '_': {
+          \   'outputter': 'buffer',
+          \   'runner': 'job',
+          \   'cmdopt': '',
+          \   'args': '',
+          \   'tempfile'  : '124.txt',
+          \   'exec': '%c %o %s %a',
+          \ }
+          \}
+  else
+    let g:quickrun_config = {
+          \ '_': {
+          \   'outputter': 'buffer',
+          \   'runner': 'system',
+          \   'cmdopt': '',
+          \   'args': '',
+          \   'tempfile'  : '%{tempname()}',
+          \   'exec': '%c %o %s %a',
+          \ }
+          \}
+  endif
 endif
 
 
@@ -98,11 +121,11 @@ if index(g:bundle_group, 'fantasic') >= 0
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-projectionist'
   let g:projectionist_heuristics = {
-      \   'CProjects/' : {
-      \       '*.c': { 'alternate': '{}.h' },
-      \       '*.h': { 'alternate': '{}.c' }
-      \   }
-      \ }
+        \   'CProjects/' : {
+        \       '*.c': { 'alternate': '{}.h' },
+        \       '*.h': { 'alternate': '{}.c' }
+        \   }
+        \ }
 
   Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
