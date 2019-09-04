@@ -1,13 +1,15 @@
 "----------------------------------------------------------------------
 " system detection
 "----------------------------------------------------------------------
+let s:is_win = 0
 if has('win32') || has('win64') || has('win95') || has('win16')
   let s:uname = 'windows'
+  let s:is_win = 1
 elseif has('win32unix')
   let s:uname = 'cygwin'
 elseif has('unix')
   let s:uname = system("echo -n \"$(uname)\"")
-  if !v:shell_error && s:uname == "Linux"
+  if !v:shell_error && s:uname ==? 'Linux'
     let s:uname = 'linux'
   elseif v:shell_error == 0 && match(s:uname, 'Darwin') >= 0
     let s:uname = 'darwin'
@@ -63,36 +65,25 @@ if index(g:bundle_group, 'basic') >= 0
   let delimitMate_expand_inside_quotes = 1
   let delimitMate_balance_matchpairs = 1
   au FileType c,cpp,java let b:delimitMate_insert_eol_marker = 2
-  au FileType c,cpp,java let b:delimitMate_eol_marker = ";"
+  au FileType c,cpp,java let b:delimitMate_eol_marker = ';'
   imap <C-d> <Plug>delimitMateJumpMany
 
   Plug 'tpope/vim-commentary'
 
   Plug 'thinca/vim-quickrun'
   Plug 'SenZhangAI/vim-quickrun-neovim-job'
-  if has('job')
-    let g:quickrun_config = {
-          \ '_': {
-          \   'outputter': 'buffer',
-          \   'runner': 'job',
-          \   'cmdopt': '',
-          \   'args': '',
-          \   'tempfile'  : '%{tempname()}',
-          \   'exec': '%c %o %s %a',
-          \ }
-          \}
-  elseif has('nvim')
-    let g:quickrun_config = {
-          \ '_': {
-          \   'outputter': 'buffer',
-          \   'runner': 'jobstart',
-          \   'cmdopt': '',
-          \   'args': '',
-          \   'tempfile'  : '%{tempname()}',
-          \   'exec': '%c %o %s %a',
-          \ }
-          \}
-  endif
+  let g:quickrun_config = {
+        \ '_': {
+        \   'outputter': 'buffer',
+        \   'runner':
+        \     has('job') ? 'job' :
+        \     has('nvim') ? 'jobstart' : 'system',
+        \   'cmdopt': '',
+        \   'args': '',
+        \   'tempfile'  : '%{tempname()}',
+        \   'exec': '%c %o %s %a',
+        \ }
+        \}
 endif
 
 
