@@ -82,7 +82,27 @@ if index(g:bundle_group, 'basic') >= 0
         \   'args': '',
         \   'tempfile'  : '%{tempname()}',
         \   'exec': '%c %o %s %a',
-        \ }
+        \ },
+        \ 'c': {
+        \   'type':
+        \     s:is_win && executable('cl') ? 'c/vc'  :
+        \     executable('clang')          ? 'c/clang' :
+        \     executable('gcc')            ? 'c/gcc' : '',
+        \ },
+        \ 'c/clang': {
+        \   'command': 'clang',
+        \   'cmdopt': '-Wformat=0',
+        \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+        \   'tempfile': '%{tempname()}.c',
+        \   'hook/sweep/files': '%S:p:r',
+        \ },
+        \ 'c/gcc': {
+        \   'command': 'gcc',
+        \   'cmdopt': '-Wformat=0',
+        \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+        \   'tempfile': '%{tempname()}.c',
+        \   'hook/sweep/files': '%S:p:r',
+        \ },
         \}
 endif
 
