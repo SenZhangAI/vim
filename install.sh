@@ -5,9 +5,9 @@ set -e
 vim_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 command_installed() {
-    printf "%-48s" "Check if $1 installed..."
-    found=$(which $1)
-    if [ "$found" == "" ]; then
+    printf "%-48s" "Check command $1..."
+    command -v $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
         printf "Not Installed\n"
         return 1
     else
@@ -21,7 +21,7 @@ if command_installed nvim; then
 elif command_installed vim; then
     _vim='vim'
 else
-    printf "Error: command [vim] or [nvim] or [which] not found.\n"
+    printf "Error: command [vim] or [nvim] not found.\n"
     exit 1
 fi
 
