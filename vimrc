@@ -21,7 +21,7 @@ call add(g:bundle_group, 'rainbow')
 call add(g:bundle_group, 'nerdtree')
 call add(g:bundle_group, 'tagbar')
 call add(g:bundle_group, 'airline')
-call add(g:bundle_group, 'ale')
+"call add(g:bundle_group, 'ale')
 "call add(g:bundle_group, 'try')
 
 so ~/.vim/vim/bundle.vim
