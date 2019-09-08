@@ -409,14 +409,15 @@ if index(g:bundle_group, 'tags') >= 0
     let g:gutentags_modules += ['gtags_cscope']
   endif
   let g:gutentags_ctags_exclude = ['*.min.js', '*.min.css', 'build', 'vendor', '.git', 'node_modules']
+  let g:gutentags_project_root = ['.git', '.idea', '.root', '.svn','.hg','.project']
 
   set tags=./.tags;,.tags
-
-  let g:gutentags_project_root = ['.git', '.idea', '.root', '.svn','.hg','.project']
   let g:gutentags_ctags_tagfile = '.tags'
-
-  " let g:gutentags_modules = ['ctags', 'gtags_cscope']
   let g:gutentags_cache_dir = expand('~/.cache/tags')
+
+  " [Exuberant Ctags Ref] http://ctags.sourceforge.net/ctags.html
+  " [Universal Ctags Ref] http://docs.ctags.io/en/latest/index.html
+  " [Language Supported] https://github.com/universal-ctags/ctags/tree/master/parsers
   let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
   let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
   let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
