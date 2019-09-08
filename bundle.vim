@@ -268,6 +268,7 @@ if index(g:bundle_group, 'golang') >= 0
   endif
 
   " see https://github.com/fatih/vim-go-tutorial
+  let g:go_def_mode='godef'
   let g:go_fmt_command = 'goimports'
   let g:go_autodetect_gopath = 1
   let g:go_list_type = 'quickfix'
@@ -397,6 +398,7 @@ endif
 
 " tags
 if index(g:bundle_group, 'tags') >= 0
+  " ref https://www.zhihu.com/question/47691414/answer/373700711
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'skywind3000/gutentags_plus'
   let g:gutentags_modules = []
@@ -406,8 +408,7 @@ if index(g:bundle_group, 'tags') >= 0
   if executable('gtags-cscope') && executable('gtags')
     let g:gutentags_modules += ['gtags_cscope']
   endif
-  "let g:gutentags_trace = 1 " debug for gutentags
-  let g:gutentags_ctags_exclude = ['*.min.js', '*.min.css', 'build', 'vendor', '.git', 'node_modules', '*.vim/bundles/*']
+  let g:gutentags_ctags_exclude = ['*.min.js', '*.min.css', 'build', 'vendor', '.git', 'node_modules']
 
   set tags=./.tags;,.tags
 
@@ -416,14 +417,13 @@ if index(g:bundle_group, 'tags') >= 0
 
   " let g:gutentags_modules = ['ctags', 'gtags_cscope']
   let g:gutentags_cache_dir = expand('~/.cache/tags')
-  let g:gutentags_ctags_extra_args = []
   let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
   let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
   let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
   let g:gutentags_auto_add_gtags_cscope = 1
 
-  " let g:gutentags_define_advanced_commands = 1
+  let g:gutentags_define_advanced_commands = 1
 
   if has('win32') || has('win16') || has('win64') || has('win95')
     let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
