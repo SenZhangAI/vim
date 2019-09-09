@@ -413,7 +413,7 @@ if index(g:bundle_group, 'tags') >= 0
 
   set tags=./.tags;,.tags
   let g:gutentags_ctags_tagfile = '.tags'
-  let g:gutentags_cache_dir = expand('~/.cache/tags')
+  let g:gutentags_cache_dir = expand('~/.vim/cache/tags')
 
   " [Exuberant Ctags Ref] http://ctags.sourceforge.net/ctags.html
   " [Universal Ctags Ref] http://docs.ctags.io/en/latest/index.html
