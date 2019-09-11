@@ -81,7 +81,7 @@ endif
 
 " Spelling Check {{{
 setlocal spelllang=en_us,cjk
-setlocal spellfile=~/.vim/vim/spell/en.utf-8.add
+"setlocal spellfile=~/.vim/vim/spell/en.utf-8.add
 set nospell
 "autocmd FileType markdown,txt setlocal spell
 " }}}
