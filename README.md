@@ -6,7 +6,7 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 ## Install
 
-1. Make sure you install [node](https://nodejs.org/en/) and [yarn](https://github.com/yarnpkg/yarn) first if you want ot use [markdown-preview](https://github.com/iamcco/markdown-preview.nvim).
+1. Make sure you install [node](https://nodejs.org/en/) and [yarn](https://github.com/yarnpkg/yarn) first if you want to use [markdown-preview](https://github.com/iamcco/markdown-preview.nvim).
 2. Install vim plugins by following script
 ```sh
  ./install.sh
@@ -20,24 +20,24 @@ Inspired by [skywind-vimrc](https://github.com/skywind3000/vim)
 
 #### coc-marketplace
 
-use [coc-marketplace](https://github.com/fannheyward/coc-marketplace), you can search many useful extensions
+Use [coc-marketplace](https://github.com/fannheyward/coc-marketplace), you can search many useful extensions
 
 `:CocList marketplace` list all available extensions
 `:CocList marketplace python` to search extension that name contains python
 
 #### Debug language server
 
-see <https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel>
+See <https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel>
 
-### golang support
+### Golang support
 
-install golang LSP server see <https://github.com/golang/go/wiki/gopls>
+Install golang LSP server see <https://github.com/golang/go/wiki/gopls>
 
 ```sh
 $ GO111MODULE=on go get golang.org/x/tools/gopls@latest
 ```
 
-### julia support
+### Julia support
 julia coc support see <https://github.com/neoclide/coc.nvim/wiki/Language-servers#julia>
 
 ```julia
@@ -59,7 +59,7 @@ $ pip3 install vim-vint
 $ go get github.com/mattn/efm-langserver
 ```
 
-config efm-langserver
+Configure efm-langserver
 
 <https://github.com/mattn/efm-langserver#example-for-configyaml>
 

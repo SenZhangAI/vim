@@ -139,6 +139,7 @@ if index(g:bundle_group, 'fantasic') >= 0
         \   }
         \ }
 
+  " Rg regexp ref https://docs.rs/regex/1.3.1/regex/#syntax
   Plug 'junegunn/fzf', { 'dir': '~/.vim/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   let g:fzf_colors =

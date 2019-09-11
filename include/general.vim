@@ -1,8 +1,28 @@
 " Basic
 set nocompatible
 
-set winaltkeys=no
-set backspace=eol,start,indent
+" Appearance && Behavior {{{
+set number
+set relativenumber
+set numberwidth=6
+set ruler
+set cursorline
+set scrolloff=3
+set cmdheight=2
+set wrap
+set linebreak
+set listchars=tab:^-,trail:-,eol:$,extends:>,precedes:<
+
+" cursorline switched while focus is switched to another split window
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+" set cursor to last position when reopen
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+set wildmenu
+set wildmode=list:longest,full
+
+set updatetime=500
 
 " using clipboard cross application
 set clipboard=unnamed
@@ -10,10 +30,12 @@ if has('unnamedplus')
   set clipboard^=unnamedplus
 endif
 
-set updatetime=500
+set backspace=eol,start,indent
+
+set winaltkeys=no
+" }}}
 
 " Indent & Format {{{
-
 "j: smart join multi-comment lines.
 "n: smart indent numbered lists. "TODO I don't know what about it.
 "B: When joining lines, don't insert a space between two multi-byte character
@@ -41,28 +63,6 @@ autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 autocmd FileType vim,haskell,css,html setlocal sw=2 ts=2 sts=2
 " }}}
 
-" Appearance {{{
-set number
-set relativenumber
-set numberwidth=6
-set ruler
-set cursorline
-set scrolloff=3
-set cmdheight=2
-set wrap
-set linebreak
-set listchars=tab:^-,trail:-,eol:$,extends:>,precedes:<
-
-" cursorline switched while focus is switched to another split window
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
-" set cursor to last position when reopen
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-set wildmenu
-set wildmode=list:longest,full
-" }}}
-
 " Searching {{{
 set hlsearch                          " search highlighting
 set incsearch                         " incremental search
@@ -77,6 +77,13 @@ if has('multi_byte')
   set encoding=utf-8
   scriptencoding
 endif
+" }}}
+
+" Spelling Check {{{
+setlocal spelllang=en_us,cjk
+setlocal spellfile=~/.vim/vim/spell/en.utf-8.add
+set nospell
+"autocmd FileType markdown,txt setlocal spell
 " }}}
 
 " Filetype & syntax {{{
