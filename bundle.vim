@@ -239,6 +239,9 @@ if index(g:bundle_group, 'fantasic') >= 0
 
   " show character in decimal, octal, and hex, unicode and so on
   Plug 'tpope/vim-characterize'
+
+  " Search in Google(gG), Wiki(gW)
+  Plug 'dhruvasagar/vim-open-url'
 endif
 
 "----------------------------------------------------------------------
