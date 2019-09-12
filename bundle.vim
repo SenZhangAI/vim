@@ -119,12 +119,6 @@ if index(g:bundle_group, 'git') >= 0
 endif
 
 "----------------------------------------------------------------------
-" package group - enhanced
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'enhanced') >= 0
-endif
-
-"----------------------------------------------------------------------
 " package group - fantasic
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'fantasic') >= 0
@@ -173,10 +167,10 @@ if index(g:bundle_group, 'fantasic') >= 0
     let g:Lf_ShortcutF = '<C-p>'
     let g:Lf_ShortcutB = '<m-n>'
     "noremap <C-m> :LeaderfMru<cr> "bug: this will alse make <CR> bind to this
-    noremap <M-p> :LeaderfFunction!<cr>
-    noremap <M-P> :LeaderfBufTag!<cr>
-    noremap <M-N> :LeaderfBuffer<cr>
-    noremap <M-m> :LeaderfTag<cr>
+    noremap <leader>f :LeaderfFunction!<cr>
+    noremap <C-g> :LeaderfTag<cr>
+    noremap <C-h> :LeaderfBufTag!<cr>
+    noremap <C-n> :LeaderfBuffer<cr>
 
     let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
     let g:Lf_WorkingDirectoryMode = 'Ac'
@@ -203,14 +197,6 @@ if index(g:bundle_group, 'fantasic') >= 0
           \ 'BufTag': [['<ESC>', ':exec g:Lf_py "bufTagExplManager.quit()"<cr>']],
           \ 'Function': [['<ESC>', ':exec g:Lf_py "functionExplManager.quit()"<cr>']],
           \ }
-  else
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'tacahiroy/ctrlp-funky'
-    let g:ctrlp_map = ''
-    noremap <C-p> :CtrlP<cr>
-    noremap <C-m> :CtrlPMRUFiles<cr>
-    noremap <M-p> :CtrlPFunky<cr>
-    noremap <M-n> :CtrlPBuffer<cr>
   endif
 
   Plug 'vim-scripts/L9'
@@ -284,14 +270,9 @@ if index(g:bundle_group, 'golang') >= 0
   let g:go_highlight_extra_types = 1
   let g:go_highlight_generate_tags = 1
 
-  " Open :GoDeclsDir with ctrl-g
-  nmap <C-g> :GoDeclsDir<cr>
-  imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
-
-
   augroup go
+    " delete autocmd in group
     autocmd!
-
     " Show by default 4 spaces for a tab
     autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
@@ -320,6 +301,10 @@ if index(g:bundle_group, 'golang') >= 0
     autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
     " :GoDef but opens in a horizontal split
     autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
+
+    " Open :GoDeclsDir with ctrl-g
+    " autocmd FileType go nmap <C-g> :GoDeclsDir<cr>
+    " autocmd FileType go imap <C-g> <esc>:<C-u>GoDeclsDir<cr>
 
     " :GoAlternate  commands :A, :AV, :AS and :AT
     autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -501,7 +486,7 @@ if index(g:bundle_group, 'coc') >= 0
 
   " format for julia etc.
   " TODO need fixed in future,can not work for julia at this moment
-  nnoremap <leader>f  <Plug>(coc-format)
+  autocmd FileType julia nnoremap <leader>af <Plug>(coc-format)
 
   " show function signature automatically, experiments
   "autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
