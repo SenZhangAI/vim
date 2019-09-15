@@ -651,6 +651,7 @@ if index(g:bundle_group, 'ale') >= 0
   let g:ale_cpp_gcc_options = '-Wall -O2 -I./ -I./include/ -std=c++17'
   let g:ale_c_cppcheck_options = ''
   let g:ale_cpp_cppcheck_options = ''
+  let g:ale_haskell_hie_executable = 'hie-wrapper'
 
   let g:ale_linters.text = ['textlint', 'write-good', 'languagetool']
 
