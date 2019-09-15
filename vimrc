@@ -13,6 +13,7 @@ call add(g:bundle_group, 'terminus')
 call add(g:bundle_group, 'tags')
 call add(g:bundle_group, 'ale')
 call add(g:bundle_group, 'coc')
+call add(g:bundle_group, 'repl')
 "call add(g:bundle_group, 'deoplete')
 "call add(g:bundle_group, 'try')
 

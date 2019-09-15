@@ -721,6 +721,38 @@ if index(g:bundle_group, 'ale') >= 0
   "let g:ale_keep_list_window_open = 1
 endif
 
+if index(g:bundle_group, 'repl') >= 0
+  Plug 'sillybun/vim-repl'
+  let g:repl_console_name = 'ZREPL'
+  let g:repl_program = {
+        \   'python': 'ipython',
+        \   'default': 'zsh',
+        \   'r': 'R',
+        \   'lua': 'lua',
+        \   'vim': 'vim -e',
+        \   'haskell': 'ghci %',
+        \   }
+  let g:repl_exit_commands = {
+        \   'python': 'quit()',
+        \   'bash': 'exit',
+        \   'zsh': 'exit',
+        \   'default': 'exit',
+        \   'haskell': '":q"',
+        \ }
+  let g:repl_predefine_python = {
+        \   'numpy': 'import numpy as np',
+        \   'matplotlib': 'from matplotlib import pyplot as plt'
+        \   }
+  let g:repl_cursor_down = 1
+  let g:repl_python_automerge = 1
+  let g:repl_ipython_version = '7'
+  nnoremap <leader>ee :REPLToggle<Cr>
+  autocmd Filetype python nnoremap <leader>es <Esc>:REPLDebugStopAtCurrentLine<Cr>
+  autocmd Filetype python nnoremap <leader>en <Esc>:REPLPDBN<Cr>
+  autocmd Filetype python nnoremap <leader>ep <Esc>:REPLPDBS<Cr>
+  let g:repl_position = 3
+endif
+
 "----------------------------------------------------------------------
 " package group - try: do some experiments
 "----------------------------------------------------------------------
