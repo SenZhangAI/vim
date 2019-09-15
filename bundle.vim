@@ -647,8 +647,8 @@ if index(g:bundle_group, 'ale') >= 0
   let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
   let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
   let g:ale_python_pylint_options .= ' --disable=W'
-  let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-  let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
+  let g:ale_c_gcc_options = '-Wall -O2 -I./ -I./include/ -std=c99'
+  let g:ale_cpp_gcc_options = '-Wall -O2 -I./ -I./include/ -std=c++17'
   let g:ale_c_cppcheck_options = ''
   let g:ale_cpp_cppcheck_options = ''
 
@@ -658,7 +658,7 @@ if index(g:bundle_group, 'ale') >= 0
     let g:ale_linters.c += ['clang']
     let g:ale_linters.cpp += ['clang']
   endif
-  nmap <A-CR> <Plug>(ale_fix)
+  "nmap <C-CR> <Plug>(ale_fix)
   "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
   "nmap <silent> <C-j> <Plug>(ale_next_wrap)
   "let g:ale_set_loclist = 0
