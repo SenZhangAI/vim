@@ -103,6 +103,37 @@ if index(g:bundle_group, 'basic') >= 0
         \   'tempfile': '%{tempname()}.c',
         \   'hook/sweep/files': '%S:p:r',
         \ },
+        \ 'cpp': {
+        \   'type':
+        \     s:is_win && executable('cl') ? 'cpp/vc'  :
+        \     executable('clang++')        ? 'cpp/clang++'  :
+        \     executable('g++')            ? 'cpp/g++' : '',
+        \ },
+        \ 'cpp/C': {
+        \   'command': 'C',
+        \   'exec': '%c %o -p %s',
+        \ },
+        \ 'cpp/clang++': {
+        \   'command': 'clang++',
+        \   'cmdopt': '-std=c++11',
+        \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+        \   'tempfile': '%{tempname()}.cpp',
+        \   'hook/sweep/files': ['%S:p:r'],
+        \ },
+        \ 'cpp/g++': {
+        \   'command': 'g++',
+        \   'cmdopt': '-std=c++11',
+        \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+        \   'tempfile': '%{tempname()}.cpp',
+        \   'hook/sweep/files': '%S:p:r',
+        \ },
+        \ 'cpp/vc': {
+        \   'command': 'cl',
+        \   'exec': ['%c %o %s /nologo /Fo%s:p:r.obj /Fe%s:p:r.exe > nul',
+        \            '%s:p:r.exe %a'],
+        \   'tempfile': '%{tempname()}.cpp',
+        \   'hook/sweep/files': ['%S:p:r.exe', '%S:p:r.obj'],
+        \ },
         \}
 endif
 
