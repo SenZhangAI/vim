@@ -72,6 +72,8 @@ if index(g:bundle_group, 'basic') >= 0
 
   Plug 'thinca/vim-quickrun'
   Plug 'SenZhangAI/vim-quickrun-neovim-job'
+  Plug 'SenZhangAI/vim-quickrun-compileflags'
+
   let g:quickrun_config = {
         \ '_': {
         \   'outputter': 'buffer',
@@ -115,17 +117,21 @@ if index(g:bundle_group, 'basic') >= 0
         \ },
         \ 'cpp/clang++': {
         \   'command': 'clang++',
-        \   'cmdopt': '-std=c++11 $(if [ -f "compile_flags.txt" ];then cat compile_flags.txt; else echo '';fi)',
+        \   'cmdopt': '-std=c++11',
         \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
         \   'tempfile': '%{tempname()}.cpp',
+        \   'hook/cd/directory': '%S:p:h',
         \   'hook/sweep/files': ['%S:p:r'],
+        \   'hook/compileflags/cmdoptfile': 'compile_flags.txt',
         \ },
         \ 'cpp/g++': {
         \   'command': 'g++',
-        \   'cmdopt': '-std=c++11 $(if [ -f "compile_flags.txt" ];then cat compile_flags.txt; else echo '';fi)',
+        \   'cmdopt': '-std=c++11',
         \   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
         \   'tempfile': '%{tempname()}.cpp',
-        \   'hook/sweep/files': '%S:p:r',
+        \   'hook/cd/directory': '%S:p:h',
+        \   'hook/sweep/files': ['%S:p:r'],
+        \   'hook/compileflags/cmdoptfile': 'compile_flags.txt',
         \ },
         \ 'cpp/vc': {
         \   'command': 'cl',
