@@ -60,7 +60,7 @@ autocmd FileType c,cpp,java setlocal formatoptions+=ro
 autocmd FileType make,asm setlocal noexpandtab shiftwidth=8 softtabstop=0
 
 " autocmd FileType html,xhtml,xml setlocal tabstop=2 shiftwidth=2 softtabstop=2 autoindent
-autocmd FileType vim,haskell,css,html setlocal sw=2 ts=2 sts=2
+autocmd FileType vim,haskell,css,html,xml setlocal sw=2 ts=2 sts=2
 " }}}
 
 " Searching {{{
