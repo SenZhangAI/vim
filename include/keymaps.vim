@@ -26,8 +26,12 @@ function! AutoEncoding()
   exec 'set fileencoding=utf-8'
   exec 'set ff=unix'
 endfunc
-
 nnoremap <leader>ae :call AutoEncoding()<CR>
+
+function! MakeDir()
+  exec '!mkdir -p %:h'
+endfunc
+nnoremap <leader>dir :call MakeDir()<CR>
 
 " use arrow to shift buffer
 noremap <left> :bp<CR>
