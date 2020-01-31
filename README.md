@@ -29,7 +29,13 @@ Use [coc-marketplace](https://github.com/fannheyward/coc-marketplace), you can s
 
 See <https://github.com/neoclide/coc.nvim/wiki/Debug-language-server#using-output-channel>
 
-### Golang support
+#### coc LSP Server
+
+LSP server table <https://langserver.org/#implementations-server>
+
+Config example <https://github.com/neoclide/coc.nvim/wiki/Language-servers>
+
+#### Golang support
 
 Install golang LSP server see <https://github.com/golang/go/wiki/gopls>
 
@@ -37,7 +43,7 @@ Install golang LSP server see <https://github.com/golang/go/wiki/gopls>
 $ GO111MODULE=on go get golang.org/x/tools/gopls@latest
 ```
 
-### Julia support
+#### Julia support
 julia coc support see <https://github.com/neoclide/coc.nvim/wiki/Language-servers#julia>
 
 ```julia
@@ -47,7 +53,7 @@ julia> Pkg.add("SymbolServer")
 julia> Pkg.add("StaticLint")
 ```
 
-### vim support
+#### vim support
 
 syntax checker for vim，see <https://github.com/mattn/efm-langserver>
 
