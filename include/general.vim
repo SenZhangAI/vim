@@ -22,7 +22,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 set wildmenu
 set wildmode=list:longest,full
 
-set updatetime=500
+set updatetime=300
 
 " using clipboard cross application
 set clipboard=unnamed
