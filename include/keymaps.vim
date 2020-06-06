@@ -76,3 +76,4 @@ endfunction
 " more toggle function see: <https://github.com/tpope/vim-unimpaired/blob/master/doc/unimpaired.txt>
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> yoq :call ToggleList("Quickfix List", 'c')<CR>
+nmap <silent> coq :call ToggleList("[quickrun output]", 'c')<CR>
