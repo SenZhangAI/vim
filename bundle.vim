@@ -56,7 +56,8 @@ if index(g:bundle_group, 'basic') >= 0
   " Start interactive EasyAlign for a motion/text object (e.g. <hotkey>ip)
   nmap \= <Plug>(EasyAlign)
 
-  Plug 'easymotion/vim-easymotion'
+  " Plug 'easymotion/vim-easymotion' " replaced by vim-sneak
+  Plug 'justinmk/vim-sneak'
 
   Plug 'Raimondi/delimitMate'
   let delimitMate_jump_expansion = 1
@@ -382,6 +383,17 @@ endif
 if index(g:bundle_group, 'markdown-preview') >= 0
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
   autocmd FileType markdown nnoremap <buffer> <leader>r :MarkdownPreview<CR>
+  let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {'theme':'simple'},
+    \ 'flowchart_diagrams': {}
+    \ }
 endif
 
 if index(g:bundle_group, 'haskell') >= 0
