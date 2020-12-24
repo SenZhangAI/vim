@@ -266,6 +266,9 @@ if index(g:bundle_group, 'fantasic') >= 0
 
   " Search in Google(gG), Wiki(gW)
   Plug 'dhruvasagar/vim-open-url'
+
+  " undo tree
+  Plug 'mbbill/undotree'
 endif
 
 "----------------------------------------------------------------------
