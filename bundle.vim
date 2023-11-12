@@ -269,6 +269,12 @@ if index(g:bundle_group, 'fantasic') >= 0
 
   " undo tree
   Plug 'mbbill/undotree'
+
+  if has("nvim")
+    " this plugin requires having Neovim version >= v0.7
+    Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+  endif
+
 endif
 
 "----------------------------------------------------------------------
