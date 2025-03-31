@@ -532,7 +532,7 @@ if index(g:bundle_group, 'tags') >= 0
 endif
 
 if index(g:bundle_group, 'coc') >= 0
-  Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'honza/vim-snippets'
   " if hidden is not set, TextEdit might fail.
   set hidden

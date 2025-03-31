@@ -33,5 +33,6 @@
             ],
             "filetypes": ["julia"]
         }
-    }
+    },
+    "snippets.ultisnips.pythonPrompt": false
 }
