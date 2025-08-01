@@ -237,15 +237,14 @@ if index(g:bundle_group, 'fantasic') >= 0
           \ }
   endif
 
-  Plug 'vim-scripts/L9'
-  Plug 'vim-scripts/FuzzyFinder'
+  " Removed outdated FuzzyFinder plugins - use FZF instead
+  " Legacy keybindings kept for reference:
+  " noremap <silent><tab>- :FufMruFile<cr>  -> use :History
+  " noremap <silent><tab>= :FufFile<cr>     -> use <C-p> or :Files
+  " noremap <silent><tab>[ :FufBuffer<cr>   -> use :Buffers
+  " noremap <silent><tab>] :FufBufferTag<cr> -> use :BTags
 
-  noremap <silent><tab>- :FufMruFile<cr>
-  noremap <silent><tab>= :FufFile<cr>
-  noremap <silent><tab>[ :FufBuffer<cr>
-  noremap <silent><tab>] :FufBufferTag<cr>
-
-  Plug 'dyng/ctrlsf.vim'
+  Plug 'dyng/ctrlsf.vim', {'on': ['CtrlSF', 'CtrlSFOpen', 'CtrlSFToggle']}
 
   Plug 'dkprice/vim-easygrep'
   map <silent> <Leader>vv <plug>EgMapGrepCurrentWord_v
@@ -268,7 +267,7 @@ if index(g:bundle_group, 'fantasic') >= 0
   Plug 'dhruvasagar/vim-open-url'
 
   " undo tree
-  Plug 'mbbill/undotree'
+  Plug 'mbbill/undotree', {'on': 'UndotreeToggle'}
 
   if has("nvim")
     " this plugin requires having Neovim version >= v0.7
@@ -754,7 +753,7 @@ if index(g:bundle_group, 'rainbow') >= 0
 endif
 
 if index(g:bundle_group, 'tagbar') >= 0
-  Plug 'majutsushi/tagbar'
+  Plug 'majutsushi/tagbar', {'on': 'TagbarToggle'}
   noremap cot :TagbarToggle<cr>
 endif
 
@@ -782,7 +781,7 @@ if index(g:bundle_group, 'airline') >= 0
 endif
 
 if index(g:bundle_group, 'ale') >= 0
-  Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
 
   let g:airline#extensions#ale#enabled = 1
   let g:ale_linter_aliases = {

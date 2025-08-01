@@ -12,17 +12,34 @@
             "filetypes": ["go"]
         },
         "rust": {
-            "command": "ra_lsp_server",
+            "command": "rust-analyzer",
             "filetypes": ["rust"],
-            "rootPatterns": ["Cargo.toml"]
+            "rootPatterns": ["Cargo.toml"],
+            "settings": {
+                "rust-analyzer": {
+                    "checkOnSave": {
+                        "command": "clippy"
+                    },
+                    "cargo": {
+                        "loadOutDirsFromCheck": true
+                    },
+                    "procMacro": {
+                        "enable": true
+                    }
+                }
+            }
         },
         "haskell": {
-            "command": "hie-wrapper",
-            "rootPatterns": [ ".stack.yaml", "cabal.config", "package.yaml" ],
-            "filetypes": [ "hs", "lhs", "haskell" ],
-            "initializationOptions": {
-                "languageServerHaskell": {
-                    "hlintOn": true
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"],
+            "settings": {
+                "haskell": {
+                    "checkProject": true,
+                    "maxCompletions": 40,
+                    "formattingProvider": "ormolu",
+                    "cabalFormattingProvider": "cabalfmt"
                 }
             }
         },

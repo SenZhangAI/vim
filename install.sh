@@ -61,5 +61,5 @@ mkdir -p $HOME/.vim/.undo
 ln -sfn $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
 ln -sfn $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
 
-$_vim -c "CocInstall -sync coc-snippets coc-yank coc-marketplace coc-rls | qall" || echo "error happend when running CocInstall"
+$_vim -c "CocInstall -sync coc-snippets coc-yank coc-marketplace coc-rust-analyzer coc-pyright | qall" || echo "error happend when running CocInstall"
 unset _vim
