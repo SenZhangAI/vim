@@ -1,0 +1,5 @@
+# 先忽略所有位置的 CLAUDE.md
+**/CLAUDE.md
+
+# 再显式保留【根目录】的 CLAUDE.md
+!/CLAUDE.md

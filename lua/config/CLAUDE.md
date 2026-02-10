@@ -7,6 +7,7 @@
 
 | ID | Time | T | Title | Read |
 |----|------|---|-------|------|
+| #5085 | 6:32 AM | ✅ | Reordered Module Loading in Neovim Configuration | ~227 |
 | #5075 | 6:29 AM | 🔵 | Neovim configuration structure identified | ~238 |
 | #4981 | 5:22 AM | 🟣 | Created Neovim-Specific Options Configuration | ~560 |
 | #4942 | 5:17 AM | 🟣 | Created Lua Configuration Entry Point | ~395 |
