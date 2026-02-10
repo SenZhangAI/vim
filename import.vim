@@ -5,7 +5,5 @@ command! -nargs=1 Import exec 'so '.s:home.'/'.'<args>'
 exec 'set rtp+='.s:home
 
 Import include/general.vim
-Import include/fix.vim
 Import include/keymaps.vim
 Import include/ignores.vim
-Import include/plugins.vim
