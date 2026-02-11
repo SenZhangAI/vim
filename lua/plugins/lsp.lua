@@ -18,7 +18,7 @@ return {
         "clangd",
         "rust_analyzer",
         "pyright",
-        "gopls",
+        -- gopls installed manually (registry v0.21 requires Go 1.25+)
         "jdtls",
       },
       automatic_enable = true,
