@@ -74,6 +74,7 @@ return {
           -- gr mapped to Trouble lsp_references (see trouble.nvim config)
           map("n", "K", vim.lsp.buf.hover, "Hover documentation")
           map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+          map("n", "<F2>", vim.lsp.buf.rename, "Rename symbol")
           map("n", "<leader>ac", vim.lsp.buf.code_action, "Code action")
           map("x", "<leader>a", vim.lsp.buf.code_action, "Code action (selection)")
           map("n", "<leader>qf", function()

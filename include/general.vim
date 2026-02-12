@@ -35,7 +35,6 @@ if !has('nvim')
   set backspace=eol,start,indent
 endif
 
-set winaltkeys=no
 " }}}
 
 " Indent & Format {{{
@@ -114,9 +113,11 @@ if !has('nvim')
 endif
 " }}}
 
-" Complete config {{{
-set complete+=k
-set completeopt=menu,preview
+" Complete config (vim 8 only; nvim-cmp overrides in Lua) {{{
+if !has('nvim')
+  set complete+=k
+  set completeopt=menu,preview
+endif
 " }}}
 
 " JSON comment highlighting

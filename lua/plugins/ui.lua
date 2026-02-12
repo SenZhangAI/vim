@@ -42,6 +42,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
+      { "<C-b>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
       { "<space>nn", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
       { "<leader>n", "<cmd>NvimTreeFindFile<cr>", desc = "Find file in tree" },
       { "<leader>m", "<cmd>NvimTreeClose<cr>", desc = "Close file tree" },

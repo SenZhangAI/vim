@@ -3,11 +3,11 @@ let g:mapleader=','
 
 inoremap jk <ESC>`^
 
-" move lines up and down using ctrl+[jk]
-nmap <C-k> mz:m-2<cr>`z
-map <C-j> mz:m+<cr>`z
-vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
-vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
+" move lines up and down using Alt+[jk] (aligns with VS Code Alt+Up/Down)
+nmap <A-k> mz:m-2<cr>`z
+map <A-j> mz:m+<cr>`z
+vmap <A-k> :m'<-2<cr>`>my`<mzgv`yo`z
+vmap <A-j> :m'>+<cr>`<my`>mzgv`yo`z
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj

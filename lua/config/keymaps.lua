@@ -16,8 +16,8 @@ map("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix" })
 map("n", "[l", "<cmd>lprevious<cr>", { desc = "Prev loclist" })
 map("n", "]l", "<cmd>lnext<cr>", { desc = "Next loclist" })
 
--- Terminal toggle (replaces vim-repl)
-map("n", "<leader>ee", function()
+-- Terminal toggle (Ctrl+J, aligns with VS Code Ctrl+J/Cmd+J)
+local function toggle_terminal()
   local buf_list = vim.api.nvim_list_bufs()
   for _, buf in ipairs(buf_list) do
     if vim.bo[buf].buftype == "terminal" then
@@ -30,7 +30,9 @@ map("n", "<leader>ee", function()
   end
   vim.cmd("botright split | terminal")
   vim.cmd("resize 15")
-end, { desc = "Toggle terminal" })
+end
+map("n", "<C-j>", toggle_terminal, { desc = "Toggle terminal" })
+map("t", "<C-j>", toggle_terminal, { desc = "Toggle terminal" })
 
 -- Quickfix toggle
 map("n", "yoq", function()

@@ -10,8 +10,6 @@ return {
       { "<C-p>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader>f", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
       { "<C-n>", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<C-g>", "<cmd>Telescope tags<cr>", desc = "Tags" },
-      { "<C-h>", "<cmd>Telescope current_buffer_tags<cr>", desc = "Buffer tags" },
       { "<space>c", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<space>j", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
       { "<space>p", "<cmd>Telescope resume<cr>", desc = "Resume last search" },
