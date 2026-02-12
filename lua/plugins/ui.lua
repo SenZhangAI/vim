@@ -80,10 +80,14 @@ return {
   -- Icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
-  -- Better UI for select/input (code actions, rename, etc.)
+  -- Better UI for vim.ui.input (rename, etc.)
   {
-    "stevearc/dressing.nvim",
-    event = "VeryLazy",
-    opts = {},
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      input = { enabled = true },
+    },
   },
 }
