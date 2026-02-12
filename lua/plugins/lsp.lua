@@ -20,9 +20,17 @@ return {
         "pyright",
         -- gopls installed manually (registry v0.21 requires Go 1.25+)
         "jdtls",
+        "lua_ls",
       },
       automatic_enable = true,
     },
+  },
+
+  -- Lua LSP support for Neovim config editing
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {},
   },
 
   -- LSP config (data-only: provides lsp/*.lua defaults)
@@ -63,7 +71,7 @@ return {
           map("n", "gd", vim.lsp.buf.definition, "Go to definition")
           map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
           map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
-          map("n", "gr", vim.lsp.buf.references, "Find references")
+          -- gr mapped to Trouble lsp_references (see trouble.nvim config)
           map("n", "K", vim.lsp.buf.hover, "Hover documentation")
           map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
           map("n", "<leader>ac", vim.lsp.buf.code_action, "Code action")
@@ -134,5 +142,27 @@ return {
         end,
       })
     end,
+  },
+
+  -- Diagnostics viewer (replaces basic loclist)
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      { "<space>a", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+      { "<space>d", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
+      { "<space>q", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix (Trouble)" },
+      { "<space>l", "<cmd>Trouble loclist toggle<cr>", desc = "Loclist (Trouble)" },
+      { "gr", "<cmd>Trouble lsp_references toggle<cr>", desc = "LSP references (Trouble)" },
+    },
+    opts = {},
+  },
+
+  -- LSP progress indicator
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {},
   },
 }

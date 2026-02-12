@@ -3,7 +3,18 @@ local map = vim.keymap.set
 -- LSP keymaps (set in lsp.lua on_attach, but global diagnostic nav here)
 map("n", "[g", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 map("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-map("n", "<space>a", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
+
+-- Buffer navigation (replaces vim-unimpaired [b/]b)
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
+-- Quickfix navigation (replaces vim-unimpaired [q/]q)
+map("n", "[q", "<cmd>cprevious<cr>", { desc = "Prev quickfix" })
+map("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix" })
+
+-- Location list navigation
+map("n", "[l", "<cmd>lprevious<cr>", { desc = "Prev loclist" })
+map("n", "]l", "<cmd>lnext<cr>", { desc = "Next loclist" })
 
 -- Terminal toggle (replaces vim-repl)
 map("n", "<leader>ee", function()

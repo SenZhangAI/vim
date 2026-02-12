@@ -78,4 +78,11 @@ return {
 
   -- Icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
+
+  -- Better UI for select/input (code actions, rename, etc.)
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }

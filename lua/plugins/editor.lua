@@ -68,9 +68,27 @@ return {
   -- Repeat support for plugin mappings
   { "tpope/vim-repeat", event = "VeryLazy" },
 
-  -- Case conversion (crs: snake_case, crm: MixedCase, etc.)
-  { "tpope/vim-abolish", event = "VeryLazy" },
+  -- Highlight TODO/FIXME/HACK/NOTE comments
+  {
+    "folke/todo-comments.nvim",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next TODO" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Prev TODO" },
+      { "<leader>st", "<cmd>Telescope todo-comments todo<cr>", desc = "Search TODOs" },
+    },
+    opts = {},
+  },
 
-  -- Unimpaired bracket mappings
-  { "tpope/vim-unimpaired", event = "VeryLazy" },
+  -- Indent guides
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      indent = { char = "│" },
+      scope = { enabled = true, show_start = false, show_end = false },
+    },
+  },
 }
