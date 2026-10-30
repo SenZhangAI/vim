@@ -40,10 +40,24 @@ mkdir -p $HOME/.config/nvim/
 nvim_rc=$HOME/.config/nvim/init.vim
 backup_rand=$RANDOM
 
+# $1 的内容是否等于仓库里 $2 的当前或任一历史版本 (即以前 install.sh 拷过去的, 不含用户自己的改动)
+is_our_file() {
+    cmp -s "$1" "$vim_dir/$2" && return 0
+    command -v git >/dev/null 2>&1 || return 1
+    local blob
+    blob=$(git hash-object "$1" 2>/dev/null) || return 1
+    git -C "$vim_dir" log --format= --raw --no-abbrev HEAD -- "$2" 2>/dev/null \
+        | awk '{print $4}' | grep -qx "$blob"
+}
+
+# $1: 目标文件, $2: 它对应的仓库文件
 backup_file() {
     if [ -L "$1" ]; then
         # Symlinks are just pointers — remove without backup
         echo "Removing existing symlink [$1]"
+        rm -f "$1"
+    elif [ -f "$1" ] && is_our_file "$1" "$2"; then
+        echo "Replacing [$1] (an earlier copy from this repo)"
         rm -f "$1"
     elif [ -f "$1" ]; then
         echo "There's a original file [$1] exist."
@@ -59,9 +73,9 @@ backup_file() {
     return 0;
 }
 
-backup_file $vim_rc
-backup_file $gvim_rc
-backup_file $nvim_rc
+backup_file $vim_rc vimrc
+backup_file $gvim_rc gvimrc
+backup_file $nvim_rc vimrc
 
 cp $vim_dir/vimrc $vim_rc
 ln -sfn $vim_rc $nvim_rc
