@@ -67,27 +67,6 @@ return {
     },
   },
 
-  -- Start screen
-  {
-    "goolord/alpha-nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("alpha").setup(require("alpha.themes.startify").config)
-    end,
-  },
-
   -- Icons
   { "nvim-tree/nvim-web-devicons", lazy = true },
-
-  -- Better UI for vim.ui.input (rename, etc.)
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-      input = { enabled = true },
-    },
-  },
 }

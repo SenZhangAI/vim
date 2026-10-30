@@ -144,11 +144,14 @@ if [ "$has_nvim" = true ]; then
     # Check minimum version
     nvim_major=$(echo $nvim_version | cut -d. -f1)
     nvim_minor=$(echo $nvim_version | cut -d. -f2)
-    if [ "$nvim_major" -eq 0 ] && [ "$nvim_minor" -lt 9 ]; then
-        echo "WARNING: Neovim $nvim_version is too old. Please upgrade to 0.9+ for best experience."
+    if [ "$nvim_major" -eq 0 ] && [ "$nvim_minor" -lt 11 ]; then
+        echo "WARNING: Neovim $nvim_version is too old. This config needs 0.11+ (vim.lsp.config, treesitter main)."
         echo "  brew upgrade neovim"
         echo ""
     fi
+    # 可选外部工具
+    command_installed tree-sitter || echo "  -> Treesitter parser 编译需要: brew install tree-sitter-cli"
+    command_installed rg || echo "  -> picker grep 需要: brew install ripgrep"
 fi
 
 # Vim 路径已不装插件; 清理旧版 install.sh 留下的 CoC 软链 (目标文件已删除)

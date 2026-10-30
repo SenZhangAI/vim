@@ -1,20 +1,10 @@
 local map = vim.keymap.set
 
 -- LSP keymaps (set in lsp.lua on_attach, but global diagnostic nav here)
-map("n", "[g", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-map("n", "]g", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "[g", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Prev diagnostic" })
+map("n", "]g", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" })
 
--- Buffer navigation (replaces vim-unimpaired [b/]b)
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
--- Quickfix navigation (replaces vim-unimpaired [q/]q)
-map("n", "[q", "<cmd>cprevious<cr>", { desc = "Prev quickfix" })
-map("n", "]q", "<cmd>cnext<cr>", { desc = "Next quickfix" })
-
--- Location list navigation
-map("n", "[l", "<cmd>lprevious<cr>", { desc = "Prev loclist" })
-map("n", "]l", "<cmd>lnext<cr>", { desc = "Next loclist" })
+-- [b ]b / [q ]q / [l ]l 是 nvim 0.11+ 内置映射, 无需再定义
 
 -- Terminal toggle (Ctrl+J, aligns with VS Code Ctrl+J/Cmd+J)
 local function toggle_terminal()

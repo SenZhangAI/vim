@@ -1,11 +1,4 @@
 return {
-  -- Auto pairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    opts = {},
-  },
-
   -- Surround editing
   {
     "kylechui/nvim-surround",
@@ -21,13 +14,6 @@ return {
       { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     },
-    opts = {},
-  },
-
-  -- Comment
-  {
-    "numToStr/Comment.nvim",
-    event = "VeryLazy",
     opts = {},
   },
 
@@ -48,17 +34,6 @@ return {
     },
   },
 
-  -- Color highlighter
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      user_default_options = {
-        names = false,
-      },
-    },
-  },
-
   -- Rainbow delimiters (treesitter-based)
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -76,19 +51,8 @@ return {
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next TODO" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Prev TODO" },
-      { "<leader>st", "<cmd>Telescope todo-comments todo<cr>", desc = "Search TODOs" },
+      { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Search TODOs" },
     },
     opts = {},
-  },
-
-  -- Indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      indent = { char = "│" },
-      scope = { enabled = true, show_start = false, show_end = false },
-    },
   },
 }

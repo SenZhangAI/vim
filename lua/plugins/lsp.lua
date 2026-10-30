@@ -1,35 +1,19 @@
+-- 只做代码阅读导航 (跳转/引用/悬浮文档/诊断): 代码交给 Claude 写,
+-- 所以不装补全、格式化、lint, 也不自动安装服务器 —— PATH 里有哪个就启用哪个
+local servers = {
+  clangd = "clangd",
+  rust_analyzer = "rust-analyzer",
+  pyright = "pyright-langserver",
+  gopls = "gopls",
+  jdtls = "jdtls",
+  lua_ls = "lua-language-server",
+}
+
 return {
-  -- Mason: LSP server installer
+  -- 需要时手动 :Mason 安装服务器
   {
     "mason-org/mason.nvim",
     cmd = "Mason",
-    opts = {},
-  },
-
-  -- Mason-lspconfig bridge (auto-installs + auto-enables servers)
-  {
-    "mason-org/mason-lspconfig.nvim",
-    dependencies = {
-      "mason-org/mason.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      ensure_installed = {
-        "clangd",
-        "rust_analyzer",
-        "pyright",
-        -- gopls installed manually (registry v0.21 requires Go 1.25+)
-        "jdtls",
-        "lua_ls",
-      },
-      automatic_enable = true,
-    },
-  },
-
-  -- Lua LSP support for Neovim config editing
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
     opts = {},
   },
 
@@ -37,14 +21,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
-      -- Global defaults for all LSP clients
-      vim.lsp.config("*", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      })
+      -- mason 懒加载时不会把自己的 bin 加进 PATH, 这里补上, 已装过的服务器照常可用
+      local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+      if vim.uv.fs_stat(mason_bin) and not vim.env.PATH:find(mason_bin, 1, true) then
+        vim.env.PATH = mason_bin .. ":" .. vim.env.PATH
+      end
 
-      -- Per-server overrides
       vim.lsp.config("clangd", {
         cmd = { "clangd", "--background-index" },
       })
@@ -52,27 +35,32 @@ return {
       vim.lsp.config("rust_analyzer", {
         settings = {
           ["rust-analyzer"] = {
-            checkOnSave = { command = "clippy" },
-            cargo = { loadOutDirsFromCheck = true },
+            check = { command = "clippy" },
+            cargo = { buildScripts = { enable = true } },
             procMacro = { enable = true },
           },
         },
       })
 
+      for name, bin in pairs(servers) do
+        if vim.fn.executable(bin) == 1 then
+          vim.lsp.enable(name)
+        end
+      end
+
       -- Buffer-local keymaps on LSP attach
       vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
         callback = function(ev)
-          local client = vim.lsp.get_client_by_id(ev.data.client_id)
-          local bufnr = ev.buf
-          local map = function(mode, lhs, rhs, desc)
-            vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
+          local map = function(mode, lhs, rhs, desc, extra)
+            vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", { buffer = ev.buf, desc = desc }, extra or {}))
           end
 
           map("n", "gd", vim.lsp.buf.definition, "Go to definition")
           map("n", "gy", vim.lsp.buf.type_definition, "Go to type definition")
           map("n", "gi", vim.lsp.buf.implementation, "Go to implementation")
-          -- gr mapped to Trouble lsp_references (see trouble.nvim config)
-          map("n", "K", vim.lsp.buf.hover, "Hover documentation")
+          -- nowait: 不等待 0.11 内置的 grr/grn/gra 等前缀映射
+          map("n", "gr", function() Snacks.picker.lsp_references() end, "References", { nowait = true })
           map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
           map("n", "<F2>", vim.lsp.buf.rename, "Rename symbol")
           map("n", "<leader>ac", vim.lsp.buf.code_action, "Code action")
@@ -83,87 +71,11 @@ return {
               apply = true,
             })
           end, "Quick fix")
-          map("n", "<space>o", function()
-            require("telescope.builtin").lsp_document_symbols()
-          end, "Document symbols")
-          map("n", "<space>s", function()
-            require("telescope.builtin").lsp_dynamic_workspace_symbols()
-          end, "Workspace symbols")
-
-          -- Highlight symbol under cursor
-          if client and client.server_capabilities.documentHighlightProvider then
-            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-              buffer = bufnr,
-              callback = vim.lsp.buf.document_highlight,
-            })
-            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-              buffer = bufnr,
-              callback = vim.lsp.buf.clear_references,
-            })
-          end
+          map({ "n", "x" }, "<leader>af", function() vim.lsp.buf.format({ async = true }) end, "Format")
+          map("n", "<space>o", function() Snacks.picker.lsp_symbols() end, "Document symbols")
+          map("n", "<space>s", function() Snacks.picker.lsp_workspace_symbols() end, "Workspace symbols")
         end,
       })
     end,
-  },
-
-  -- Formatting
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    cmd = "ConformInfo",
-    keys = {
-      { "<leader>af", function() require("conform").format({ async = true, lsp_format = "fallback" }) end, desc = "Format" },
-    },
-    opts = {
-      formatters_by_ft = {
-        python = { "ruff_format" },
-        rust = { "rustfmt" },
-        go = { "gofmt", "goimports" },
-        java = { "google-java-format" },
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-      },
-    },
-  },
-
-  -- Linting (non-LSP linters)
-  {
-    "mfussenegger/nvim-lint",
-    event = { "BufReadPost", "BufWritePost" },
-    config = function()
-      local lint = require("lint")
-      lint.linters_by_ft = {
-        python = { "ruff" },
-        c = { "cppcheck" },
-        cpp = { "cppcheck" },
-      }
-      vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
-        callback = function()
-          lint.try_lint()
-        end,
-      })
-    end,
-  },
-
-  -- Diagnostics viewer (replaces basic loclist)
-  {
-    "folke/trouble.nvim",
-    cmd = "Trouble",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = {
-      { "<space>a", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
-      { "<space>d", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer diagnostics" },
-      { "<space>q", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix (Trouble)" },
-      { "<space>l", "<cmd>Trouble loclist toggle<cr>", desc = "Loclist (Trouble)" },
-      { "gr", "<cmd>Trouble lsp_references toggle<cr>", desc = "LSP references (Trouble)" },
-    },
-    opts = {},
-  },
-
-  -- LSP progress indicator
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {},
   },
 }

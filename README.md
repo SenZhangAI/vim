@@ -2,7 +2,7 @@
 
 个人 Vim/Neovim 配置：
 
-- **Neovim (0.9+)** — 主力编辑器。Lua 配置，lazy.nvim 插件管理，原生 LSP + Treesitter + Telescope
+- **Neovim (0.11+)** — 主力编辑器。Lua 配置，lazy.nvim 插件管理，定位文档阅读 + 快速修改（代码交给 Claude 写），Treesitter + snacks.nvim + 只读 LSP 导航
 - **Vim** — 只保留共享基础设置，不装插件（临时改文件 / ssh 场景）
 
 支持语言：C/C++、Rust、Python、Go、Java、Lua、Markdown
@@ -35,7 +35,7 @@ vimrc → import.vim → include/*.vim (共享配置)
 
 | 文件 | 说明 |
 |------|------|
-| `general.vim` | 编辑器默认值（4空格缩进、自动保存、持久撤销、去除尾部空白） |
+| `general.vim` | 编辑器默认值（4空格缩进、外部修改自动重载、持久撤销、去除尾部空白） |
 | `keymaps.vim` | Leader 键 `,`，`jk`=ESC，Alt-j/k 移动行，方向键切换缓冲区 |
 | `ignores.vim` | wildignore 文件忽略模式 |
 
@@ -51,13 +51,12 @@ lua/config/
 lua/plugins/
   colorscheme.lua → solarized.nvim 配色
   treesitter.lua  → 语法高亮 + 文本对象
-  lsp.lua         → mason + lspconfig + conform + nvim-lint + lazydev
-  cmp.lua         → nvim-cmp + LuaSnip 自动补全
-  telescope.lua   → 模糊搜索 + fzf-native
-  ui.lua          → lualine, bufferline, nvim-tree, which-key, alpha, dressing
-  editor.lua      → autopairs, surround, flash, comment, easy-align,
-                    undotree, colorizer, rainbow-delimiters,
-                    todo-comments, indent-blankline
+  snacks.lua      → snacks.nvim: picker, dashboard, notifier, indent, input, bigfile, words
+  lsp.lua         → lspconfig (只做导航, 启用 PATH 中已有的服务器) + mason (手动)
+  markdown.lua    → render-markdown.nvim
+  ui.lua          → lualine, bufferline, nvim-tree, which-key
+  editor.lua      → surround, flash, easy-align, undotree,
+                    rainbow-delimiters, todo-comments
   git.lua         → gitsigns, fugitive
 ```
 
@@ -86,37 +85,26 @@ lua/plugins/
 ## 插件列表
 
 <details>
-<summary>展开查看全部 30+ 插件</summary>
+<summary>展开查看全部插件</summary>
 
 | 插件 | 用途 |
 |------|------|
 | solarized.nvim | 配色方案 |
+| snacks.nvim | 模糊搜索、启动界面、通知、缩进线、输入框、大文件优化 |
 | nvim-treesitter | 语法高亮 + 文本对象 |
-| nvim-lspconfig + mason | LSP 客户端 + 服务器管理 |
-| lazydev.nvim | Neovim Lua API 补全 |
-| conform.nvim | 保存时自动格式化 |
-| nvim-lint | 代码检查 |
-| nvim-cmp + LuaSnip | 自动补全 + 代码片段 |
-| telescope.nvim | 模糊搜索 |
-| trouble.nvim | 诊断/引用面板 |
-| fidget.nvim | LSP 进度指示 |
+| render-markdown.nvim | Markdown 渲染 |
+| nvim-lspconfig + mason | LSP 导航 (服务器手动安装) |
 | nvim-tree.lua | 文件树 |
 | lualine.nvim | 状态栏 |
 | bufferline.nvim | 缓冲区标签栏 |
-| alpha-nvim | 启动界面 |
 | which-key.nvim | 快捷键提示 |
-| dressing.nvim | 美化 UI 组件 |
 | gitsigns.nvim | Git 行级标记 |
 | vim-fugitive | Git 命令集成 |
 | flash.nvim | 快速跳转 |
 | nvim-surround | 包围编辑 |
-| Comment.nvim | 注释切换 |
-| nvim-autopairs | 括号自动配对 |
 | vim-easy-align | 文本对齐 |
 | undotree | 撤销历史树 |
 | todo-comments.nvim | TODO/FIXME 高亮 |
-| indent-blankline.nvim | 缩进参考线 |
-| nvim-colorizer.lua | 颜色代码预览 |
 | rainbow-delimiters.nvim | 彩虹括号 |
 
 </details>
