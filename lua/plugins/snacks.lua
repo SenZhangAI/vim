@@ -8,6 +8,15 @@ local function toggle_explorer()
   end
 end
 
+-- reveal 在文件树已打开时只移动树里的光标, 不切换窗口; 这里补上聚焦
+local function reveal_explorer()
+  local explorer = Snacks.picker.get({ source = "explorer" })[1]
+  Snacks.explorer.reveal()
+  if explorer then
+    explorer:focus("list")
+  end
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -51,10 +60,11 @@ return {
           -- fancy diff 预览的 hunk 头写死了 Nerd Font 字符, 改用内置 diff 语法高亮
           previewers = { diff = { style = "syntax" } },
           -- picker 窗口里 <C-b> 默认是向上滚动; 在文件树里改成关闭, 和外面的开关键一致
+          -- o 默认是系统打开; 改成和回车一样在右侧打开 (目录则展开), 系统打开挪到 O
           sources = {
             explorer = {
               win = {
-                list = { keys = { ["<C-b>"] = "close" } },
+                list = { keys = { ["<C-b>"] = "close", ["o"] = "confirm", ["O"] = "explorer_open" } },
                 input = { keys = { ["<C-b>"] = { "close", mode = { "n", "i" } } } },
               },
             },
@@ -81,7 +91,7 @@ return {
       -- 侧边栏文件树 (跟随当前文件, 显示 git 状态和诊断)
       { "<C-b>", toggle_explorer, desc = "Toggle file explorer" },
       { "<space>nn", toggle_explorer, desc = "Toggle file explorer" },
-      { "<leader>n", function() Snacks.explorer.reveal() end, desc = "Reveal file in explorer" },
+      { "<leader>n", reveal_explorer, desc = "Reveal file in explorer" },
       -- 搜索
       { "<C-p>", function() Snacks.picker.files() end, desc = "Find files" },
       { "<leader>f", function() Snacks.picker.grep() end, desc = "Live grep" },
