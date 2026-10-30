@@ -53,7 +53,6 @@ lua/plugins/
   treesitter.lua  → 语法高亮
   snacks.lua      → snacks.nvim: 侧边栏文件树, picker, dashboard, notifier, indent, input, bigfile, words
   lsp.lua         → lspconfig (只做导航, 启用 PATH 中已有的服务器) + mason (手动)
-  markdown.lua    → render-markdown.nvim
   ui.lua          → mini.icons (ASCII 图标), lualine, which-key
   git.lua         → gitsigns
 ```
@@ -83,7 +82,7 @@ lua/plugins/
 ## 插件列表
 
 <details>
-<summary>展开查看全部插件 (11 个)</summary>
+<summary>展开查看全部插件 (10 个)</summary>
 
 | 插件 | 用途 |
 |------|------|
@@ -92,7 +91,6 @@ lua/plugins/
 | snacks.nvim | 侧边栏文件树、模糊搜索、启动页、通知、缩进线、输入框、大文件优化 |
 | mini.icons | ASCII 图标，不依赖 Nerd Font |
 | nvim-treesitter | 语法高亮 |
-| render-markdown.nvim | Markdown 渲染 |
 | nvim-lspconfig + mason | LSP 导航 (服务器手动安装) |
 | gitsigns.nvim | Git 行级标记、diff、blame |
 | lualine.nvim | 状态栏 |

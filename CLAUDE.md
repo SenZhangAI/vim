@@ -44,7 +44,6 @@ lua/plugins/           → one file per plugin group:
   treesitter.lua       → nvim-treesitter (main branch, needs tree-sitter CLI)
   snacks.lua           → snacks.nvim: explorer sidebar, picker, dashboard, notifier, indent, input, bigfile, words
   lsp.lua              → lspconfig; enables only servers found on PATH / mason bin. mason is manual (:Mason)
-  markdown.lua         → render-markdown.nvim
   ui.lua               → mini.icons (style = "ascii"), lualine, which-key
   git.lua              → gitsigns (diff/blame; git status/log pickers live in snacks.lua)
 ```
@@ -54,8 +53,8 @@ No plugins by design: only `include/*.vim` + `NeoSolarized` colorscheme. The for
 
 ## Editing Guidelines
 
-- **No Nerd Font**: icons are deliberately ASCII so any terminal/font works. mini.icons (`style = "ascii"`) is the only icon provider; do not add nvim-web-devicons. Plugins with their own icon tables (snacks picker/notifier, which-key keys, lazy ui, render-markdown) get ASCII values via their config options. Never introduce Private Use Area glyphs (U+E000-F8FF, U+F0000+).
-- **Minimal plugin set** (11): editing is done by AI, so only reading/navigation/review plugins. Prefer Neovim built-ins (`gc` comments, `nvim.undotree`, 0.11+ default `[b`/`]q` mappings) over plugins.
+- **No Nerd Font**: icons are deliberately ASCII so any terminal/font works. mini.icons (`style = "ascii"`) is the only icon provider; do not add nvim-web-devicons. Plugins with their own icon tables (snacks picker/notifier, which-key keys, lazy ui) get ASCII values via their config options. Never introduce Private Use Area glyphs (U+E000-F8FF, U+F0000+).
+- **Minimal plugin set** (10): editing is done by AI, so only reading/navigation/review plugins. Markdown is syntax-highlighted only (Treesitter), not rendered: render-markdown was tried and removed by preference. Prefer Neovim built-ins (`gc` comments, `nvim.undotree`, 0.11+ default `[b`/`]q` mappings) over plugins.
 
 - **Neovim plugins**: edit files in `lua/plugins/`. Each file returns a lazy.nvim spec table.
 - **Shared settings**: edit `include/*.vim`. Use `if !has('nvim')` guards for vim-only settings.

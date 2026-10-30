@@ -9,7 +9,6 @@
 - [快速入门](#快速入门)
 - [文件树与缓冲区](#文件树与缓冲区)
 - [搜索](#搜索)
-- [Markdown 阅读](#markdown-阅读)
 - [LSP 代码导航](#lsp-代码导航)
 - [快速编辑](#快速编辑)
 - [Git 审阅](#git-审阅)
@@ -28,7 +27,7 @@ brew upgrade neovim  # 需要 0.11+，推荐 0.12（内置 undotree）
 
 首次启动 Neovim 会自动通过 lazy.nvim 安装所有插件。
 
-定位: **阅读文档/代码 + 快速修改**，写代码交给 Claude。所以没有自动补全、代码片段、保存时格式化和 lint，插件只保留 11 个。
+定位: **阅读文档/代码 + 快速修改**，写代码交给 Claude。所以没有自动补全、代码片段、保存时格式化和 lint，插件只保留 10 个。
 
 - Treesitter 编译 parser 需要 tree-sitter CLI，`install.sh` 会提示用 Homebrew 安装（连同 ripgrep）
 - 界面不使用 Nerd Font 图标（图标由 mini.icons 的 ASCII 风格提供），任何终端、任何字体都能正常显示
@@ -88,16 +87,6 @@ brew upgrade neovim  # 需要 0.11+，推荐 0.12（内置 undotree）
 | `,st` | 搜索所有 TODO/FIXME/HACK/NOTE 注释 | — |
 
 Picker 内: `Esc` 关闭, `Ctrl-j/k` 上下选择, `Enter` 确认, `Ctrl-v` 垂直分屏打开, `Ctrl-s` 水平分屏打开。
-
----
-
-## Markdown 阅读
-
-打开 `.md` 文件时 render-markdown.nvim 会在 buffer 内渲染标题、表格、代码块、复选框、callout；光标所在行显示原文，可直接编辑。
-
-| 按键 | 功能 |
-|------|------|
-| `,mr` | 开关渲染 |
 
 ---
 
@@ -223,7 +212,6 @@ LSP 只用来读代码（跳转、引用、文档、诊断）。服务器启动�
 | **snacks.nvim** | 文件树 / picker / 启动页 / 通知 / 缩进线 / 输入框 / 大文件优化 / 引用高亮 | 启动时 |
 | **mini.icons** | ASCII 图标 (不依赖 Nerd Font) | 启动时 |
 | **nvim-treesitter** | 语法高亮 | 启动时 |
-| **render-markdown.nvim** | Markdown 渲染 | 打开 .md 文件 |
 | **nvim-lspconfig** | LSP 服务器默认配置 | 打开文件 |
 | **mason.nvim** | 手动安装 LSP 服务器 | `:Mason` |
 | **gitsigns.nvim** | Git 行级标记、diff、blame | 打开文件 |
