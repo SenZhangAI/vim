@@ -1,19 +1,19 @@
 # Neovim 使用指南
 
-> Leader 键: `,`  |  配色: Solarized Dark  |  字体: Hack Nerd Font Mono
+> Leader 键: `,`  |  配色: Solarized Dark  |  字体: 任意等宽字体（不依赖 Nerd Font）
 
 ---
 
 ## 目录
 
 - [快速入门](#快速入门)
-- [文件与缓冲区](#文件与缓冲区)
-- [搜索与导航](#搜索与导航)
+- [文件树与缓冲区](#文件树与缓冲区)
+- [搜索](#搜索)
 - [Markdown 阅读](#markdown-阅读)
 - [LSP 代码导航](#lsp-代码导航)
-- [代码编辑技巧](#代码编辑技巧)
-- [Git 集成](#git-集成)
-- [诊断与调试](#诊断与调试)
+- [快速编辑](#快速编辑)
+- [Git 审阅](#git-审阅)
+- [诊断与列表](#诊断与列表)
 - [插件速查](#插件速查)
 - [Vim 内置但少用的实用技巧](#vim-内置但少用的实用技巧)
 
@@ -22,41 +22,40 @@
 ## 快速入门
 
 ```bash
-./install.sh        # 自动检测 nvim/vim，安装依赖、Nerd Font
-brew upgrade neovim  # 建议升级到 0.11+
+./install.sh        # 自动检测 nvim/vim，安装依赖 (tree-sitter-cli, ripgrep)
+brew upgrade neovim  # 需要 0.11+，推荐 0.12（内置 undotree）
 ```
 
 首次启动 Neovim 会自动通过 lazy.nvim 安装所有插件。
 
-定位: **阅读文档/代码 + 快速修改**，写代码交给 Claude。所以没有自动补全、代码片段、保存时格式化和 lint。
+定位: **阅读文档/代码 + 快速修改**，写代码交给 Claude。所以没有自动补全、代码片段、保存时格式化和 lint，插件只保留 11 个。
 
-- Treesitter 编译 parser 需要 CLI: `brew install tree-sitter-cli`（nvim 0.12 自带 c/lua/vim/vimdoc/markdown parser）
+- Treesitter 编译 parser 需要 tree-sitter CLI，`install.sh` 会提示用 Homebrew 安装（连同 ripgrep）
+- 界面不使用 Nerd Font 图标（图标由 mini.icons 的 ASCII 风格提供），任何终端、任何字体都能正常显示
 - LSP 服务器不自动安装: PATH 里（或 Mason bin 目录里）有 clangd / rust-analyzer / pyright / gopls / jdtls / lua-language-server 的就自动启用，需要时用 `:Mason` 手动装
 
 **查看所有快捷键**: 按任意前缀键后等待 500ms，which-key 会弹出提示面板。
 
 ---
 
-## 文件与缓冲区
+## 文件树与缓冲区
 
-### 文件树 (nvim-tree)
+### 侧边栏文件树 (snacks explorer)
 
 | 按键 | 功能 | VS Code |
 |------|------|---------|
-| `Ctrl-b` | 开关文件树 | `Cmd+B` 切换侧栏 |
+| `Ctrl-b` | 开关文件树（文件树内也可用） | `Cmd+B` 切换侧栏 |
 | `<Space>nn` | 开关文件树（同上） | — |
 | `,n` | 在文件树中定位当前文件 | — |
-| `,m` | 关闭文件树 | — |
-| `<Space>to` | 聚焦文件树窗口 | — |
 
-文件树内操作: `a` 新建文件, `d` 删除, `r` 重命名, `c`/`p` 复制/粘贴, `Enter` 打开。
+文件树会自动跟随当前文件，并显示 git 状态和诊断。文件树内: `Enter`/`l` 打开, `h` 收起目录, `a` 新建, `d` 删除, `r` 重命名, `c` 复制, `m` 移动, `H` 显示隐藏文件, `I` 显示 git 忽略文件, `?` 查看全部按键。
 
 ### 缓冲区导航
 
 | 按键 | 功能 |
 |------|------|
 | `←` / `→` | 上/下一个缓冲区 |
-| `[b` / `]b` | 上/下一个缓冲区（同上） |
+| `[b` / `]b` | 上/下一个缓冲区（nvim 内置） |
 | `Ctrl-n` | 缓冲区列表 (picker) |
 
 ### 文件操作
@@ -71,51 +70,30 @@ brew upgrade neovim  # 建议升级到 0.11+
 
 ---
 
-## 搜索与导航
+## 搜索
 
 ### Snacks Picker (模糊搜索)
 
 | 按键 | 功能 | VS Code |
 |------|------|---------|
 | `Ctrl-p` | 搜索文件 | `Cmd+P` Quick Open |
-| `,f` | 全文搜索 (live grep) | `Cmd+Shift+F` |
+| `,f` | 全文搜索 (live grep)，可视模式下搜索选中文本 | `Cmd+Shift+F` |
 | `Ctrl-n` | 缓冲区列表 | — |
+| `<Space>r` | 最近打开的文件 | `Ctrl+R` |
 | `<Space>c` | 命令列表 | `Cmd+Shift+P` |
 | `<Space>j` | Jumplist | — |
 | `<Space>p` | 恢复上次搜索 | — |
-| `<Space>o` | 文档符号 (LSP) | `Cmd+Shift+O` |
-| `<Space>s` | 工作区符号 (LSP) | `Cmd+T` |
-| `<Space>r` | 最近打开的文件 | `Ctrl+R` |
 | `<Space>h` | 搜索 help 文档 | — |
-| `<Space>n` | 通知历史 | — |
-| `,st` | 搜索所有 TODO/FIXME 注释 | — |
+| `<Space>m` | 通知历史 | — |
+| `,st` | 搜索所有 TODO/FIXME/HACK/NOTE 注释 | — |
 
-Picker 内: `Esc` 关闭, `Ctrl-j/k` 上下选择, `Enter` 确认, `Ctrl-v` 垂直分屏打开, `Ctrl-s` 水平分屏打开。可视模式下 `,f` 搜索选中文本。
-
-### Flash (快速跳转)
-
-| 按键 | 功能 |
-|------|------|
-| `s` | 输入字符后跳转到匹配位置 |
-| `S` | Treesitter 结构选择（选中函数/类等） |
-
-`s` 是此配置中最强大的移动方式之一：按 `s`，输入目标字符，然后按提示标签直接跳转。
-
-### Treesitter 文本对象
-
-| 按键 | 功能 |
-|------|------|
-| `af` / `if` | 函数外部/内部 |
-| `ac` / `ic` | 类外部/内部 |
-| `]m` / `[m` | 下/上一个函数 |
-
-示例: `daf` 删除整个函数, `vif` 选中函数体, `yac` 复制整个类。
+Picker 内: `Esc` 关闭, `Ctrl-j/k` 上下选择, `Enter` 确认, `Ctrl-v` 垂直分屏打开, `Ctrl-s` 水平分屏打开。
 
 ---
 
 ## Markdown 阅读
 
-打开 `.md` 文件时 render-markdown.nvim 会在 buffer 内渲染标题、表格、代码块、复选框；光标所在行显示原文，可直接编辑。
+打开 `.md` 文件时 render-markdown.nvim 会在 buffer 内渲染标题、表格、代码块、复选框、callout；光标所在行显示原文，可直接编辑。
 
 | 按键 | 功能 |
 |------|------|
@@ -137,6 +115,8 @@ LSP 只用来读代码（跳转、引用、文档、诊断）。服务器启动�
 | `gr` | 查看所有引用 (picker) |
 | `]]` / `[[` | 跳到光标下符号的下/上一个引用 |
 | `K` | 悬浮文档 |
+| `<Space>o` | 文档符号 |
+| `<Space>s` | 工作区符号 |
 
 > `Ctrl-o` 跳回上一个位置, `Ctrl-i` 跳到下一个位置。
 
@@ -155,26 +135,16 @@ LSP 只用来读代码（跳转、引用、文档、诊断）。服务器启动�
 | 按键 | 功能 |
 |------|------|
 | `[g` / `]g` | 上/下一个诊断 |
-| `[t` / `]t` | 上/下一个 TODO 注释 |
 
 ### 管理 LSP 服务器
 
 - `:Mason` — 手动安装/更新 LSP 服务器（装好后重开 nvim 自动启用）
-- `:LspInfo` — 查看当前缓冲区的 LSP 状态
+- `:checkhealth vim.lsp` — 查看 LSP 状态
 - `:LspLog` — 查看 LSP 日志（调试用）
 
 ---
 
-## 代码编辑技巧
-
-### Surround (包围编辑)
-
-| 按键 | 功能 | 示例 |
-|------|------|------|
-| `ys{motion}{char}` | 添加包围 | `ysiw"` → word 变 "word" |
-| `cs{old}{new}` | 修改包围 | `cs"'` → "hello" 变 'hello' |
-| `ds{char}` | 删除包围 | `ds"` → "hello" 变 hello |
-| `S{char}` | 可视模式添加包围 | 选中后 `S(` → 加括号 |
+## 快速编辑
 
 ### 注释 (Neovim 内置)
 
@@ -183,14 +153,6 @@ LSP 只用来读代码（跳转、引用、文档、诊断）。服务器启动�
 | `gcc` | 切换当前行注释 |
 | `gc{motion}` | 切换区域注释 (如 `gcap` 注释段落) |
 | `gc` | 可视模式下切换注释 |
-
-### Easy Align (对齐)
-
-| 按键 | 功能 |
-|------|------|
-| `\=` | 启动对齐模式 |
-
-选中多行后按 `\=`，然后: `=` 按等号对齐, `:` 按冒号对齐, `<Space>` 按空格对齐。
 
 ### 移动行
 
@@ -206,40 +168,38 @@ LSP 只用来读代码（跳转、引用、文档、诊断）。服务器启动�
 | 按键 | 功能 |
 |------|------|
 | `jk` | 退出插入模式 (代替 Esc) |
-| `,u` | 打开撤销历史树 |
+| `,u` | 撤销历史树 (nvim 0.12 内置 `:Undotree`) |
 | `Ctrl-R d` (插入模式) / `,id` (普通模式) | 插入当前日期 (2026-02-12 格式) |
 | `.` | 可视模式下重复上次操作 |
 
 ---
 
-## Git 集成
+## Git 审阅
 
-### Gitsigns (行级操作)
+适合审阅 Claude 改过的代码。
+
+### Gitsigns (行级)
 
 | 按键 | 功能 |
 |------|------|
 | `]c` / `[c` | 下/上一个修改块 (hunk) |
+| `,hp` | 预览当前修改块 |
 | `,hs` | 暂存当前修改块 |
 | `,hr` | 还原当前修改块 |
-| `,hp` | 预览当前修改块 |
 | `,hb` | 显示当前行的 blame 信息 |
+| `<Space>gd` | 与暂存区对比 (分屏 diff) |
+| `<Space>gbl` | 整个文件的 blame |
 
-### Fugitive (Git 命令)
+### Git 列表 (picker)
 
 | 按键 | 功能 |
 |------|------|
-| `<Space>gst` | Git 状态面板 |
-| `<Space>gd` | Git diff (分屏对比) |
-| `<Space>gbl` | Git blame (全文件) |
-| `<Space>glol` | Git log (图形化) |
-
-Fugitive 状态面板内: `s` 暂存, `u` 取消暂存, `=` 展开 diff, `cc` 提交。
+| `<Space>gst` | Git status: 改动文件列表，右侧预览 diff |
+| `<Space>glol` | Git log |
 
 ---
 
-## 诊断与调试
-
-### 诊断列表 (picker)
+## 诊断与列表
 
 | 按键 | 功能 |
 |------|------|
@@ -247,24 +207,10 @@ Fugitive 状态面板内: `s` 暂存, `u` 取消暂存, `=` 展开 diff, `cc` �
 | `<Space>d` | 当前缓冲区诊断 |
 | `<Space>q` | Quickfix 列表 |
 | `<Space>l` | Location 列表 |
-
-### Quickfix / Location List
-
-| 按键 | 功能 |
-|------|------|
 | `[q` / `]q` | 上/下一个 quickfix 条目 |
 | `[l` / `]l` | 上/下一个 location 条目 |
 | `yoq` | 开关 quickfix 窗口 |
 | `Ctrl-j` | 开关终端 (底部分屏，终端内也可用) |
-
-### TODO 注释
-
-代码中的 `TODO`, `FIXME`, `HACK`, `NOTE`, `WARN` 会被高亮显示。
-
-| 按键 | 功能 |
-|------|------|
-| `]t` / `[t` | 跳转到下/上一个 TODO |
-| `,st` | 搜索所有 TODO |
 
 ---
 
@@ -272,25 +218,17 @@ Fugitive 状态面板内: `s` 暂存, `u` 取消暂存, `=` 展开 diff, `cc` �
 
 | 插件 | 用途 | 加载时机 |
 |------|------|---------|
+| **lazy.nvim** | 插件管理 | 启动时 |
 | **solarized.nvim** | 配色方案 | 启动时 |
-| **snacks.nvim** | picker / dashboard / 通知 / 缩进线 / 输入框 / 大文件优化 / 引用高亮 | 启动时 |
-| **nvim-treesitter** | 语法高亮 + 文本对象 | 启动时 |
+| **snacks.nvim** | 文件树 / picker / 启动页 / 通知 / 缩进线 / 输入框 / 大文件优化 / 引用高亮 | 启动时 |
+| **mini.icons** | ASCII 图标 (不依赖 Nerd Font) | 启动时 |
+| **nvim-treesitter** | 语法高亮 | 启动时 |
 | **render-markdown.nvim** | Markdown 渲染 | 打开 .md 文件 |
 | **nvim-lspconfig** | LSP 服务器默认配置 | 打开文件 |
 | **mason.nvim** | 手动安装 LSP 服务器 | `:Mason` |
-| **nvim-tree.lua** | 文件树 | 快捷键触发 |
+| **gitsigns.nvim** | Git 行级标记、diff、blame | 打开文件 |
 | **lualine.nvim** | 状态栏 | 启动时 |
-| **bufferline.nvim** | 缓冲区标签栏 | 启动时 |
 | **which-key.nvim** | 快捷键提示 | 启动时 |
-| **gitsigns.nvim** | Git 行级标记 | 打开文件 |
-| **vim-fugitive** | Git 命令 | 命令触发 |
-| **flash.nvim** | 快速跳转 | 启动时 |
-| **nvim-surround** | 包围编辑 | 启动时 |
-| **vim-easy-align** | 文本对齐 | 快捷键触发 |
-| **undotree** | 撤销历史树 | 快捷键触发 |
-| **todo-comments.nvim** | TODO 高亮 | 打开文件 |
-| **rainbow-delimiters.nvim** | 彩虹括号 | 打开文件 |
-| **vim-repeat** | `.` 重复插件操作 | 启动时 |
 
 ---
 
@@ -426,7 +364,7 @@ Fugitive 状态面板内: `s` 暂存, `u` 取消暂存, `=` 展开 diff, `cc` �
 :Lazy              " 插件管理器 (安装/更新/清理)
 :Mason             " 手动安装 LSP 服务器
 :lua Snacks.picker()  " 所有 picker 列表
-:LspInfo           " 查看 LSP 状态
+:checkhealth vim.lsp  " 查看 LSP 状态
 :checkhealth       " 健康检查 (排错必备)
 :WhichKey          " 查看所有快捷键映射
 ```

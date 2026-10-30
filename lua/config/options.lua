@@ -14,6 +14,6 @@ opt.completeopt = { "menu", "menuone", "noselect" }
 opt.backup = false
 opt.writebackup = false
 
--- Disable netrw (nvim-tree replaces it)
+-- Disable netrw (snacks explorer replaces it)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

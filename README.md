@@ -16,7 +16,7 @@
 brew upgrade neovim
 
 # 安装配置
-./install.sh   # 自动检测 nvim/vim，安装依赖和 Nerd Font
+./install.sh   # 自动检测 nvim/vim，安装依赖 (tree-sitter-cli, ripgrep)
 ```
 
 首次启动 Neovim 会自动通过 lazy.nvim 安装所有插件。Mason 会自动下载 LSP 服务器（clangd, rust_analyzer, pyright, jdtls, lua_ls）。
@@ -45,19 +45,17 @@ vimrc → import.vim → include/*.vim (共享配置)
 lua/config/
   init.lua       → 入口：加载 options, lazy, keymaps
   options.lua    → Neovim 专属选项（inccommand, termguicolors 等）
-  keymaps.lua    → 诊断导航、quickfix 切换、终端切换(Ctrl-j)、bracket 导航
+  keymaps.lua    → 诊断导航、quickfix 切换、终端切换(Ctrl-j)、内置 undotree
   lazy.lua       → lazy.nvim 引导（插件目录 ~/.vim/lazy/）
 
 lua/plugins/
   colorscheme.lua → solarized.nvim 配色
-  treesitter.lua  → 语法高亮 + 文本对象
-  snacks.lua      → snacks.nvim: picker, dashboard, notifier, indent, input, bigfile, words
+  treesitter.lua  → 语法高亮
+  snacks.lua      → snacks.nvim: 侧边栏文件树, picker, dashboard, notifier, indent, input, bigfile, words
   lsp.lua         → lspconfig (只做导航, 启用 PATH 中已有的服务器) + mason (手动)
   markdown.lua    → render-markdown.nvim
-  ui.lua          → lualine, bufferline, nvim-tree, which-key
-  editor.lua      → surround, flash, easy-align, undotree,
-                    rainbow-delimiters, todo-comments
-  git.lua         → gitsigns, fugitive
+  ui.lua          → mini.icons (ASCII 图标), lualine, which-key
+  git.lua         → gitsigns
 ```
 
 ### Vim 路径
@@ -85,27 +83,20 @@ lua/plugins/
 ## 插件列表
 
 <details>
-<summary>展开查看全部插件</summary>
+<summary>展开查看全部插件 (11 个)</summary>
 
 | 插件 | 用途 |
 |------|------|
+| lazy.nvim | 插件管理 |
 | solarized.nvim | 配色方案 |
-| snacks.nvim | 模糊搜索、启动界面、通知、缩进线、输入框、大文件优化 |
-| nvim-treesitter | 语法高亮 + 文本对象 |
+| snacks.nvim | 侧边栏文件树、模糊搜索、启动页、通知、缩进线、输入框、大文件优化 |
+| mini.icons | ASCII 图标，不依赖 Nerd Font |
+| nvim-treesitter | 语法高亮 |
 | render-markdown.nvim | Markdown 渲染 |
 | nvim-lspconfig + mason | LSP 导航 (服务器手动安装) |
-| nvim-tree.lua | 文件树 |
+| gitsigns.nvim | Git 行级标记、diff、blame |
 | lualine.nvim | 状态栏 |
-| bufferline.nvim | 缓冲区标签栏 |
 | which-key.nvim | 快捷键提示 |
-| gitsigns.nvim | Git 行级标记 |
-| vim-fugitive | Git 命令集成 |
-| flash.nvim | 快速跳转 |
-| nvim-surround | 包围编辑 |
-| vim-easy-align | 文本对齐 |
-| undotree | 撤销历史树 |
-| todo-comments.nvim | TODO/FIXME 高亮 |
-| rainbow-delimiters.nvim | 彩虹括号 |
 
 </details>
 

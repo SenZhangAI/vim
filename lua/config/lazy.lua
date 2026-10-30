@@ -15,6 +15,14 @@ require("lazy").setup("plugins", {
   root = vim.fn.expand("~/.vim/lazy"),
   defaults = { lazy = false },
   install = { colorscheme = { "solarized" } },
+  -- 不依赖 Nerd Font
+  ui = {
+    icons = {
+      cmd = "cmd ", config = "cfg ", event = "ev ", favorite = "* ", ft = "ft ",
+      init = "init ", import = "imp ", keys = "keys ", lazy = "lazy ", plugin = "",
+      runtime = "rt ", require = "req ", source = "src ", start = "start ", task = "+ ",
+    },
+  },
   checker = { enabled = false },
   change_detection = { notify = false },
   performance = {

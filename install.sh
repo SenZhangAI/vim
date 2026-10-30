@@ -69,69 +69,27 @@ cp $vim_dir/gvimrc $gvim_rc
 
 mkdir -p $HOME/.vim/.undo
 
-# Install Nerd Font for icons (lualine, bufferline, nvim-tree, etc.)
-install_nerd_font() {
-    local font_name="Hack"
-    local font_check=""
+# 外部工具: tree-sitter CLI 编译 parser (nvim-treesitter main 分支必需), ripgrep 给 picker grep 用
+install_cli_tools() {
+    local cmd pkg missing=()
+    for pair in "tree-sitter:tree-sitter-cli" "rg:ripgrep"; do
+        cmd=${pair%%:*}
+        pkg=${pair#*:}
+        command_installed "$cmd" || missing+=("$pkg")
+    done
+    [ ${#missing[@]} -eq 0 ] && return 0
 
-    # Check if already installed
-    case "$(uname -s)" in
-        Darwin)
-            font_check=$(find ~/Library/Fonts /Library/Fonts -iname "*HackNerd*" 2>/dev/null | head -1)
-            ;;
-        Linux)
-            font_check=$(fc-list 2>/dev/null | grep -i "Hack.*Nerd" | head -1)
-            ;;
-    esac
-
-    if [ -n "$font_check" ]; then
-        echo "Hack Nerd Font already installed."
-        return 0
+    if command -v brew >/dev/null 2>&1; then
+        read -p "Install ${missing[*]} via Homebrew? [Y/n] " ans
+        ans=${ans:-y}
+        if [ "$ans" = "y" ] || [ "$ans" = "Y" ]; then
+            brew install "${missing[@]}"
+            return 0
+        fi
     fi
-
-    echo ""
-    read -p "Install Hack Nerd Font for icons? [Y/n] " ans
-    ans=${ans:-y}
-    if [ "$ans" != "y" ] && [ "$ans" != "Y" ]; then
-        echo "Skipped. Icons may show as '?' without a Nerd Font."
-        echo "Set your terminal font to a Nerd Font if you install one later."
-        return 0
-    fi
-
-    case "$(uname -s)" in
-        Darwin)
-            if command -v brew >/dev/null 2>&1; then
-                echo "Installing via Homebrew..."
-                brew install --cask font-hack-nerd-font
-            else
-                echo "Homebrew not found. Install manually: https://www.nerdfonts.com/font-downloads"
-                return 1
-            fi
-            ;;
-        Linux)
-            local font_dir="$HOME/.local/share/fonts"
-            local tmp_zip="/tmp/Hack-NerdFont.zip"
-            echo "Downloading Hack Nerd Font..."
-            mkdir -p "$font_dir"
-            curl -fsSL -o "$tmp_zip" \
-                "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
-            unzip -o -q "$tmp_zip" -d "$font_dir" "*.ttf"
-            rm -f "$tmp_zip"
-            if command -v fc-cache >/dev/null 2>&1; then
-                fc-cache -f "$font_dir"
-            fi
-            echo "Hack Nerd Font installed to $font_dir"
-            ;;
-        *)
-            echo "Unsupported OS. Install manually: https://www.nerdfonts.com/font-downloads"
-            return 1
-            ;;
-    esac
-
-    echo "Done. Set your terminal font to 'Hack Nerd Font Mono' to enable icons."
+    echo "Please install manually: ${missing[*]}"
+    echo "  (tree-sitter-cli is also available via: npm install -g tree-sitter-cli / cargo install tree-sitter-cli)"
 }
-
-install_nerd_font
 
 # Install based on editor
 if [ "$has_nvim" = true ]; then
@@ -149,9 +107,8 @@ if [ "$has_nvim" = true ]; then
         echo "  brew upgrade neovim"
         echo ""
     fi
-    # 可选外部工具
-    command_installed tree-sitter || echo "  -> Treesitter parser 编译需要: brew install tree-sitter-cli"
-    command_installed rg || echo "  -> picker grep 需要: brew install ripgrep"
+
+    install_cli_tools
 fi
 
 # Vim 路径已不装插件; 清理旧版 install.sh 留下的 CoC 软链 (目标文件已删除)

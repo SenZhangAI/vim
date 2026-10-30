@@ -33,3 +33,9 @@ map("n", "yoq", function()
     vim.cmd("copen")
   end
 end, { desc = "Toggle quickfix" })
+
+-- 撤销历史树: nvim 0.12 内置 (取代 undotree 插件)
+map("n", "<leader>u", function()
+  vim.cmd.packadd("nvim.undotree")
+  vim.cmd("Undotree")
+end, { desc = "Toggle undo tree" })

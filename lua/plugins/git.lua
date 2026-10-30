@@ -8,7 +8,7 @@ return {
         add = { text = "+" },
         change = { text = "~" },
         delete = { text = "_" },
-        topdelete = { text = "‾" },
+        topdelete = { text = "^" },
         changedelete = { text = "~" },
       },
       on_attach = function(bufnr)
@@ -22,19 +22,10 @@ return {
         map("n", "<leader>hr", gs.reset_hunk, "Reset hunk")
         map("n", "<leader>hp", gs.preview_hunk, "Preview hunk")
         map("n", "<leader>hb", function() gs.blame_line({ full = true }) end, "Blame line")
+        -- 原 fugitive 的 <space>gd / <space>gbl; git status / log 在 snacks.lua
+        map("n", "<space>gd", gs.diffthis, "Git diff (split)")
+        map("n", "<space>gbl", gs.blame, "Git blame (file)")
       end,
-    },
-  },
-
-  -- Git commands
-  {
-    "tpope/vim-fugitive",
-    cmd = { "Git", "Gdiffsplit" },
-    keys = {
-      { "<space>gd", "<cmd>Gdiffsplit<cr>", desc = "Git diff" },
-      { "<space>gst", "<cmd>Git<cr>", desc = "Git status" },
-      { "<space>gbl", "<cmd>Git blame<cr>", desc = "Git blame" },
-      { "<space>glol", "<cmd>Git log --graph --decorate --oneline<cr>", desc = "Git log" },
     },
   },
 }

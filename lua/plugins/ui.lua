@@ -1,12 +1,20 @@
+-- 不依赖 Nerd Font: 图标统一由 mini.icons 的 ascii 风格提供, 各插件自带的图标改成 ASCII
 return {
+  -- 唯一的图标提供者; snacks / render-markdown 会优先用它
+  {
+    "nvim-mini/mini.icons",
+    lazy = false,
+    opts = { style = "ascii" },
+  },
+
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       options = {
         theme = "auto",
+        icons_enabled = false,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
       },
@@ -18,55 +26,28 @@ return {
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
-      extensions = { "nvim-tree", "fugitive" },
     },
   },
 
-  -- Buffer line (tab-like buffer display)
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      options = {
-        numbers = "buffer_id",
-        diagnostics = "nvim_lsp",
-        show_close_icon = false,
-        show_buffer_close_icons = false,
-      },
-    },
-  },
-
-  -- File explorer
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = {
-      { "<C-b>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
-      { "<space>nn", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file tree" },
-      { "<leader>n", "<cmd>NvimTreeFindFile<cr>", desc = "Find file in tree" },
-      { "<leader>m", "<cmd>NvimTreeClose<cr>", desc = "Close file tree" },
-      { "<space>to", "<cmd>NvimTreeFocus<cr>", desc = "Focus file tree" },
-    },
-    opts = {
-      view = { width = 35 },
-      renderer = {
-        icons = { show = { git = true, folder = true, file = true } },
-      },
-      update_focused_file = { enable = true },
-      actions = { open_file = { quit_on_open = false } },
-    },
-  },
-
-  -- Which-key
+  -- Which-key: 很久不用 vim 时靠它回忆快捷键
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
       delay = 500,
+      icons = {
+        mappings = false,
+        -- 不用 Nerd Font 时的按键名写法 (同 kickstart.nvim)
+        keys = {
+          Up = "<Up> ", Down = "<Down> ", Left = "<Left> ", Right = "<Right> ",
+          C = "<C-...> ", M = "<M-...> ", D = "<D-...> ", S = "<S-...> ",
+          CR = "<CR> ", Esc = "<Esc> ", NL = "<NL> ", BS = "<BS> ",
+          Space = "<Space> ", Tab = "<Tab> ",
+          ScrollWheelDown = "<ScrollWheelDown> ", ScrollWheelUp = "<ScrollWheelUp> ",
+          F1 = "<F1>", F2 = "<F2>", F3 = "<F3>", F4 = "<F4>", F5 = "<F5>", F6 = "<F6>",
+          F7 = "<F7>", F8 = "<F8>", F9 = "<F9>", F10 = "<F10>", F11 = "<F11>", F12 = "<F12>",
+        },
+      },
     },
   },
-
-  -- Icons
-  { "nvim-tree/nvim-web-devicons", lazy = true },
 }
