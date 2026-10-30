@@ -1,9 +1,9 @@
 ## sen's vim config
 
-个人 Vim/Neovim 配置，支持双架构：
+个人 Vim/Neovim 配置：
 
-- **Neovim (0.9+)** — Lua 配置，lazy.nvim 插件管理，原生 LSP + Treesitter + Telescope
-- **Vim 8+** — VimScript 配置，vim-plug + CoC + fzf（兼容模式）
+- **Neovim (0.9+)** — 主力编辑器。Lua 配置，lazy.nvim 插件管理，原生 LSP + Treesitter + Telescope
+- **Vim** — 只保留共享基础设置，不装插件（临时改文件 / ssh 场景）
 
 支持语言：C/C++、Rust、Python、Go、Java、Lua、Markdown
 
@@ -23,12 +23,12 @@ brew upgrade neovim
 
 ## 架构
 
-通过 `vimrc` 实现双路径自动路由：
+通过 `vimrc` 路由：
 
 ```
 vimrc → import.vim → include/*.vim (共享配置)
      ├─ has('nvim') → lua/config/   → lazy.nvim + Lua 插件
-     └─ else        → bundle.vim    → vim-plug + CoC
+     └─ else        → 只加载配色，不装插件
 ```
 
 ### 共享配置 (`include/`)
@@ -61,9 +61,9 @@ lua/plugins/
   git.lua         → gitsigns, fugitive
 ```
 
-### Vim 8 路径 (`bundle.vim`)
+### Vim 路径
 
-vim-plug 管理，插件按组加载。CoC 提供 LSP/补全，fzf 模糊搜索，airline 状态栏，NERDTree 文件树。LSP 服务器配置见 `coc-settings.json`。
+刻意不装插件：只有 `include/*.vim` 共享设置 + `NeoSolarized` 配色。原来的 vim-plug + CoC 已移除，避免同时维护两套 LSP。
 
 ## 核心快捷键
 

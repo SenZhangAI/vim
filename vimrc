@@ -4,20 +4,10 @@ if has('nvim')
   " Neovim: Lua 现代配置路径 (lazy.nvim + native LSP + treesitter)
   lua require('config')
 else
-  " Vim 8: VimScript + CoC 路径
-  let g:bundle_group = ['basic', 'git', 'nerdtree', 'rainbow',
-        \ 'airline', 'themes', 'coc',
-        \ 'cpp', 'rust', 'python', 'golang', 'markdown']
-  so ~/.vim/vim/bundle.vim
-
+  " Vim: 只用 include/ 共享基础设置, 不装插件 (临时改文件 / ssh 场景)
+  set background=dark
   if has('termguicolors')
     set termguicolors
   endif
-  set background=dark
-  colorscheme NeoSolarized
-
-  let g:airline_theme='luna'
-  let g:airline#extensions#tabline#enabled=1
-  let g:airline#extensions#tabline#buffer_nr_show=1
-  let g:airline#extensions#tabline#buffer_nr_format='%s:'
+  silent! colorscheme NeoSolarized
 endif

@@ -151,24 +151,13 @@ if [ "$has_nvim" = true ]; then
     fi
 fi
 
-if [ "$has_vim" = true ]; then
-    echo ""
-    echo "=== Vim 8 Setup ==="
-
-    # Symlink coc-settings for Vim 8
-    ln -sfn $vim_dir/coc-settings.json $HOME/.vim/coc-settings.json
-    ln -sfn $vim_dir/coc-settings.json $HOME/.config/nvim/coc-settings.json
-
-    # Install vim-plug plugins
-    vim -c "PlugInstall | qall" || echo "error happened when installing plugins..."
-
-    # Install CoC extensions
-    vim -c "CocInstall -sync coc-snippets coc-yank coc-marketplace coc-rust-analyzer coc-pyright coc-java | qall" \
-        || echo "error happened when running CocInstall"
-fi
+# Vim 路径已不装插件; 清理旧版 install.sh 留下的 CoC 软链 (目标文件已删除)
+for link in $HOME/.vim/coc-settings.json $HOME/.config/nvim/coc-settings.json; do
+    [ -L "$link" ] && rm -f "$link"
+done
 
 echo ""
 echo "=== Installation Complete ==="
 echo "  Neovim: Open nvim, lazy.nvim will auto-install plugins on first run"
-echo "  Vim 8:  Plugins installed via vim-plug + CoC"
+echo "  Vim:    Basic settings only (include/*.vim), no plugins"
 echo ""

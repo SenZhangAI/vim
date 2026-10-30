@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Personal Vim/Neovim configuration with dual-architecture support:
-- **Neovim (0.9+)**: Lua-based config with lazy.nvim, native LSP, Treesitter, telescope
-- **Vim 8+**: VimScript config with vim-plug, CoC, fzf
+Personal Vim/Neovim configuration:
+- **Neovim (0.9+)**: primary editor. Lua-based config with lazy.nvim, native LSP, Treesitter, telescope
+- **Vim**: fallback for quick edits / ssh. Shared basic settings only, no plugins
 
 Languages: C/C++, Rust, Python, Go, Java, Markdown.
 
@@ -17,15 +17,15 @@ Languages: C/C++, Rust, Python, Go, Java, Markdown.
 brew upgrade neovim  # recommended: upgrade to 0.10+ first
 ```
 
-Neovim plugins auto-install via lazy.nvim on first launch. Vim 8 plugins install via vim-plug + CoC during `install.sh`.
+Neovim plugins auto-install via lazy.nvim on first launch. Vim has no plugins to install.
 
 ## Architecture
 
-**Dual-path routing** via `vimrc`:
+**Routing** via `vimrc`:
 ```
 vimrc → import.vim → include/*.vim (shared settings)
      ├─ has('nvim') → lua require('config')  → lazy.nvim + Lua plugins
-     └─ else        → bundle.vim             → vim-plug + CoC
+     └─ else        → colorscheme only (no plugins)
 ```
 
 ### Shared VimScript (`include/`)
@@ -51,16 +51,13 @@ lua/plugins/           → one file per plugin group:
   tabnine.lua          → TabNine AI completion
 ```
 
-### Vim 8 path (`bundle.vim`)
-vim-plug based. Plugin groups gated by `index(g:bundle_group, 'name')`. CoC provides LSP/completion. fzf for fuzzy finding. airline for statusline. NERDTree for files.
-
-LSP servers for Vim 8 configured in `coc-settings.json` (clangd, gopls, rust-analyzer).
+### Vim path
+No plugins by design: only `include/*.vim` + `NeoSolarized` colorscheme. The former vim-plug + CoC stack was removed to stop maintaining two LSP setups.
 
 ## Editing Guidelines
 
 - **Neovim plugins**: edit files in `lua/plugins/`. Each file returns a lazy.nvim spec table.
-- **Vim 8 plugins**: edit `bundle.vim` inside the appropriate group guard.
 - **Shared settings**: edit `include/*.vim`. Use `if !has('nvim')` guards for vim-only settings.
 - `general.vim` auto-saves on `FocusLost`/`InsertLeave` and strips trailing whitespace on write.
-- lazy.nvim plugin dir: `~/.vim/lazy/`. vim-plug plugin dir: `~/.vim/bundles/`.
-- Color scheme: `solarized.nvim` (Lua, neovim) / `NeoSolarized.vim` (VimScript, vim 8).
+- lazy.nvim plugin dir: `~/.vim/lazy/`.
+- Color scheme: `solarized.nvim` (Lua, neovim) / `NeoSolarized.vim` (VimScript, vim).

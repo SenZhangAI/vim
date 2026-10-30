@@ -113,7 +113,7 @@ if !has('nvim')
 endif
 " }}}
 
-" Complete config (vim 8 only; nvim-cmp overrides in Lua) {{{
+" Complete config (vim only; nvim-cmp overrides in Lua) {{{
 if !has('nvim')
   set complete+=k
   set completeopt=menu,preview
